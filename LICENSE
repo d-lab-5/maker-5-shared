@@ -1,3 +1,16 @@
+This repository is under two licences, by what a file is.
+
+1. Documents and diagrams — everything in adr/, diagrams/, site/landing.md,
+   ROADMAP.md and the README files — and the copy of the ontology in
+   ontology/ (CC BY 4.0 in its source, maker-5-cloud/packages/ontology) are
+   licensed under the Creative Commons
+   Attribution 4.0 International licence (CC BY 4.0):
+   https://creativecommons.org/licenses/by/4.0/legalcode
+   Attribute them to "D-LAB-5, Maker-5".
+
+2. Code — everything in scripts/, site/site.css and .github/ — is licensed
+   under the MIT licence:
+
 MIT License
 
 Copyright (c) 2026 D-LAB-5

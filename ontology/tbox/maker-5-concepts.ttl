@@ -1,0 +1,32 @@
+@prefix m5:      <https://maker-5.cloud/ontology#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+# ============================================================
+# Concept schemes (SKOS), v0.1.
+#
+# New kinds are added HERE, as data: no code or schema change. Each concept
+# needs an English prefLabel (the master); German and French are expected.
+# ============================================================
+
+m5:BlockTypes a skos:ConceptScheme ;
+    skos:prefLabel "Kinds of blocks"@en , "Arten von Blöcken"@de , "Types de blocs"@fr ;
+    skos:hasTopConcept m5:Electronic , m5:Mechanical .
+
+m5:Electronic a skos:Concept ; skos:inScheme m5:BlockTypes ; skos:topConceptOf m5:BlockTypes ;
+    skos:prefLabel "Electronic"@en , "Elektronik"@de , "Électronique"@fr .
+
+m5:Mechanical a skos:Concept ; skos:inScheme m5:BlockTypes ; skos:topConceptOf m5:BlockTypes ;
+    skos:prefLabel "Mechanical"@en , "Mechanik"@de , "Mécanique"@fr .
+
+m5:ProposalStates a skos:ConceptScheme ;
+    skos:prefLabel "States of a proposal"@en , "Status eines Vorschlags"@de , "États d'une proposition"@fr ;
+    skos:hasTopConcept m5:Proposed , m5:Approved , m5:Rejected .
+
+m5:Proposed a skos:Concept ; skos:inScheme m5:ProposalStates ; skos:topConceptOf m5:ProposalStates ;
+    skos:prefLabel "Proposed"@en , "Vorgeschlagen"@de , "Proposée"@fr .
+
+m5:Approved a skos:Concept ; skos:inScheme m5:ProposalStates ; skos:topConceptOf m5:ProposalStates ;
+    skos:prefLabel "Approved"@en , "Genehmigt"@de , "Approuvée"@fr .
+
+m5:Rejected a skos:Concept ; skos:inScheme m5:ProposalStates ; skos:topConceptOf m5:ProposalStates ;
+    skos:prefLabel "Rejected"@en , "Abgelehnt"@de , "Rejetée"@fr .

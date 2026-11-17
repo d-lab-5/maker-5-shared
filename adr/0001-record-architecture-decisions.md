@@ -4,7 +4,7 @@ Status: **Accepted**
 
 ## Context
 
-Decisions about {{ product }} are made in conversations, commits and code
+Decisions about Maker-5 are made in conversations, commits and code
 reviews, and are hard to find again. A reader who was not there needs to know
 what was decided, why, and what follows from it.
 
@@ -13,7 +13,7 @@ what was decided, why, and what follows from it.
 Each significant decision is an Architecture Decision Record in `adr/`,
 numbered, with its Context, Decision and Consequences. A decision is not
 edited once accepted; a later one extends or replaces it. They are published
-with the rest of this repository at docs.dlab5.net/{{ domain }}/{{ slug }}/.
+with the rest of this repository at docs.dlab5.net/d-lab-5/maker-5/.
 
 ## Consequences
 
