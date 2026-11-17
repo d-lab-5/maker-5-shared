@@ -16,6 +16,12 @@ an idea. Each step links to the decision behind it.
   files given to the chat ([ADR-0005](adr/0005-files-given-to-the-chat.md)),
   proposals decided by a person ([ADR-0006](adr/0006-a-person-decides-a-proposal.md)).
 
+- People by invitation only ([ADR-0007](adr/0007-accounts-by-invitation.md)).
+- Material management: a workspace's stock in tables
+  ([ADR-0008](adr/0008-stock-lives-in-tables.md)), our codes, existing codes
+  and NFC tags ([ADR-0009](adr/0009-codes-and-tags.md)), products taking
+  parts, from the site and the edge ([ADR-0010](adr/0010-products-take-from-the-stock.md)).
+
 ## Next
 
 - **Observe:** the edge watches local Git repositories and firmware builds, and
