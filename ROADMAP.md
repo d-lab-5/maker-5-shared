@@ -9,6 +9,12 @@ an idea. Each step links to the decision behind it.
   the bench edge, and these docs ([ADR-0002](adr/0002-three-repositories.md)).
 - A seed T-Box for hardware-software co-design and agent provenance, with its
   SHACL shapes.
+- The bench edge's workbench: products on the left, the Model, Proposals,
+  History and Files tabs, the chat on the right, in English, German and
+  French. One folder per product ([ADR-0003](adr/0003-one-folder-per-product.md)),
+  every saved state a revision ([ADR-0004](adr/0004-every-saved-state-is-a-revision.md)),
+  files given to the chat ([ADR-0005](adr/0005-files-given-to-the-chat.md)),
+  proposals decided by a person ([ADR-0006](adr/0006-a-person-decides-a-proposal.md)).
 
 ## Next
 
