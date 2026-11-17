@@ -13,7 +13,7 @@ was written to it.
 ## Decision
 
 - **Our codes** are six characters of Crockford base32 (no I, L, O, U),
-  minted in batches by a workspace's admins and printed before they belong to
+  minted in batches by an organisation's admins and printed before they belong to
   anything. Someone sticks one on a part and scans it on the bench to bind it
   to an article or a unit.
 - A label's QR holds `HTTPS://MAKER-5.CLOUD/T/K7Q2M9`, in capitals, so the QR
@@ -21,10 +21,10 @@ was written to it.
   about **10 mm** on a 600 dpi laser sticker. An **NFC tag** holds the same
   URL; an iPhone opens it without an app, and Chrome on Android writes and
   locks it (Web NFC), after the person confirms the lock.
-- Our codes are unique on the site, since the URL names no workspace; they
-  resolve only for someone in the workspace that minted them.
+- Our codes are unique on the site, since the URL names no organisation; they
+  resolve only for someone in the organisation that minted them.
 - **Existing codes are aliases** of an article or a unit, unique within a
-  workspace: a GTIN/EAN (its check digit decides, kept as 14 digits), a
+  organisation: a GTIN/EAN (its check digit decides, kept as 14 digits), a
   manufacturer's QR (its text, or a SHA-256 of it when long), an NFC tag's
   UID.
 - The site's `/scan/` reads codes with the phone's camera (the browser's
@@ -38,6 +38,6 @@ was written to it.
 
 - Codes never change meaning: unbinding one of ours makes it blank again, an
   alias is retired, and the movement log keeps what happened.
-- A label printed today still works when the part moves to another product.
+- A label printed today still works when the part moves to another workspace.
 - The hosting needs rewrites for `/t/*` and `/T/*`; without them, the 404 page
   forwards a code to `/t/?c=<code>`.
