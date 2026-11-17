@@ -1,0 +1,85 @@
+@prefix m5:      <https://maker-5.cloud/ontology#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <https://schema.org/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+# ============================================================
+# The Maker-5 T-Box, v0.1: a SEED for hardware-software co-design and
+# agent provenance.
+#
+# A thin layer over standard vocabularies. Define only what they do not
+# have, and say how the standards are used here:
+#   - structure (blocks, interfaces) follows SysML v2 part and port
+#     definitions; the mapping to the OSLC SysML v2 vocabulary is a later
+#     decision, so it is named in comments and not yet asserted;
+#   - provenance (who proposed what, who approved it) is W3C PROV-O;
+#   - software and bills of materials will be described with SPDX.
+#
+# Each space (a product) keeps an A-Box of this vocabulary, synced with the
+# workspace's edges (ADR-0007).
+#
+# Labels: English is the master and is required (shapes/maker-5-shapes.ttl);
+# German and French are given for everything a person sees.
+#
+# After a change: node backend/scripts/sync-ontology.mjs, so the Lambdas
+# validate against the same file.
+# ============================================================
+
+<https://maker-5.cloud/ontology>
+    a owl:Ontology ;
+    rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
+    dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
+    owl:versionInfo "0.1.0" .
+
+# --- What a product is made of ---------------------------------------
+
+m5:Product a owl:Class ;
+    rdfs:subClassOf schema:Product ;
+    rdfs:label "Product"@en , "Produkt"@de , "Produit"@fr ;
+    rdfs:comment "A hardware and software product in the portfolio."@en .
+
+m5:Block a owl:Class ;
+    rdfs:label "Block"@en , "Block"@de , "Bloc"@fr ;
+    rdfs:comment "A hardware block of a product: a board, an enclosure, a sensor. Corresponds to a SysML v2 part definition."@en .
+
+m5:SoftwareModule a owl:Class ;
+    rdfs:subClassOf schema:SoftwareSourceCode ;
+    rdfs:label "Software module"@en , "Softwaremodul"@de , "Module logiciel"@fr ;
+    rdfs:comment "A piece of software of a product: firmware, a driver, an app. Its package is described with SPDX."@en .
+
+m5:Interface a owl:Class ;
+    rdfs:label "Interface"@en , "Schnittstelle"@de , "Interface"@fr ;
+    rdfs:comment "Where blocks and software modules meet: a bus, a connector, an API. Corresponds to a SysML v2 port or interface definition."@en .
+
+m5:partOf a owl:ObjectProperty ;
+    rdfs:range m5:Product ;
+    rdfs:label "part of"@en , "Teil von"@de , "fait partie de"@fr .
+
+m5:blockType a owl:ObjectProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "kind"@en , "Art"@de , "type"@fr ;
+    rdfs:comment "A concept from m5:BlockTypes (tbox/maker-5-concepts.ttl): new kinds are data, not code."@en .
+
+m5:connects a owl:ObjectProperty ;
+    rdfs:domain m5:Interface ;
+    rdfs:label "connects"@en , "verbindet"@de , "relie"@fr ;
+    rdfs:comment "A block or software module this interface joins."@en .
+
+# --- Who changed what: agent proposals --------------------------------
+
+m5:Proposal a owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Proposal"@en , "Vorschlag"@de , "Proposition"@fr ;
+    rdfs:comment "A change to the graph that an agent proposes. A person approves or rejects it; nothing changes until they do."@en .
+
+m5:proposalState a owl:ObjectProperty ;
+    rdfs:domain m5:Proposal ;
+    rdfs:label "state"@en , "Status"@de , "état"@fr ;
+    rdfs:comment "A concept from m5:ProposalStates."@en .
+
+m5:concerns a owl:ObjectProperty ;
+    rdfs:domain m5:Proposal ;
+    rdfs:label "concerns"@en , "betrifft"@de , "concerne"@fr ;
+    rdfs:comment "What the proposal would change: a product, block, module or interface."@en .

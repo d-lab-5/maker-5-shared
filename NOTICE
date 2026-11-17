@@ -1,4 +1,4 @@
-{{ product }} shared documentation
+Maker-5 shared documentation
 Copyright (c) D-LAB-5
 
 Sources
@@ -7,3 +7,6 @@ Sources
   whose viewer each page embeds under its own licence (MIT); see the notices
   in each page.
 - marked (MIT) and n3 (MIT) build the site; they are not shipped in it.
+- ontology/: copied by scripts/sync-ontology.sh from d-lab-5/maker-5-cloud,
+  packages/ontology, where it is CC BY 4.0 (the rest of maker-5-cloud is
+  AGPL-3.0-or-later).

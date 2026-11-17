@@ -1,6 +1,6 @@
 # Diagrams
 
-Interactive drawings of how {{ product }} works, made with Archify. The site
+Interactive drawings of how Maker-5 works, made with Archify. The site
 shows them in its gallery at `/diagrams/`.
 
 - `src/<name>.<type>.json`: the source, the only file to edit.
@@ -15,6 +15,12 @@ A diagram is listed once, with what it explains: under one of the groups
 below, or in the ADR it belongs to, under that ADR's `## Diagrams`. Each line
 reads `- [Title](../diagrams/<name>.html): what it explains.` and becomes the
 gallery card's text.
-{% for g in diagram_groups.split(',') if g.strip() %}
-## {{ g.strip() }}
-{% endfor %}
+
+## Overview
+
+## Cloud
+
+## Edge
+
+## Models
+

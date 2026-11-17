@@ -1,7 +1,7 @@
 # Security
 
 This repository is **public**, and so is the site built from it. It holds
-{{ product }}'s structures and decisions, never anyone's data or anything
+Maker-5's structures and decisions, never anyone's data or anything
 that would help reach it.
 
 Never commit:
@@ -15,7 +15,7 @@ Never commit:
 run it before a push. It cannot catch a real name written as prose, so read
 what you add.
 
-To report a problem with {{ product }} itself, write to the maintainers
+To report a problem with Maker-5 itself, write to the maintainers
 through the repository's GitHub security advisories rather than an issue.
 
 This file belongs to template-dlab5-shared; `copier update` replaces it.

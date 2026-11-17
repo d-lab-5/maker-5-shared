@@ -1,0 +1,17 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 535cf04
+_src_path: gh:d-lab-5/template-dlab5-shared
+app_repos: d-lab-5/maker-5-cloud, d-lab-5/maker-5-edge
+description: An open-source cloud-and-edge lifecycle workbench for designing, building,
+    and operating hardware and software products, guided by a shared semantic graph
+    and human-in-the-loop AI agents.
+diagram_groups: Overview, Cloud, Edge, Models
+domain: d-lab-5
+languages: en
+ontology: true
+ontology_files: tbox/maker-5.ttl, tbox/maker-5-concepts.ttl, shapes/maker-5-shapes.ttl
+ontology_source: ../maker-5-cloud/packages/ontology
+own_domain: docs.maker-5.cloud
+product: Maker-5
+repo: d-lab-5/maker-5-shared
+slug: maker-5

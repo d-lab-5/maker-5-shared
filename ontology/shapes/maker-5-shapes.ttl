@@ -1,0 +1,71 @@
+@prefix m5:     <https://maker-5.cloud/ontology#> .
+@prefix m5sh:   <https://maker-5.cloud/shapes#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+
+# ============================================================
+# SHACL shapes, v0.1: the validation gates an A-Box must pass. Validate an
+# A-Box TOGETHER with tbox/maker-5-concepts.ttl, so a kind can be checked
+# against its scheme. The cloud refuses an A-Box that does not conform
+# (ADR-0007), and that includes an agent's proposal.
+# ============================================================
+
+m5sh:InBlockTypes a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue m5:BlockTypes ] .
+
+m5sh:InProposalStates a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue m5:ProposalStates ] .
+
+m5sh:ProductShape a sh:NodeShape ;
+    sh:targetClass m5:Product ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A product needs a name."@en ] .
+
+m5sh:BlockShape a sh:NodeShape ;
+    sh:targetClass m5:Block ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A block needs a name."@en ] ;
+    sh:property [
+        sh:path m5:blockType ;
+        sh:maxCount 1 ;
+        sh:node m5sh:InBlockTypes ;
+        sh:message "A block's kind is one concept from m5:BlockTypes."@en ;
+    ] ;
+    sh:property [
+        sh:path m5:partOf ;
+        sh:class m5:Product ;
+        sh:message "A block is part of a product."@en ;
+    ] .
+
+m5sh:SoftwareModuleShape a sh:NodeShape ;
+    sh:targetClass m5:SoftwareModule ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A software module needs a name."@en ] ;
+    sh:property [
+        sh:path m5:partOf ;
+        sh:class m5:Product ;
+        sh:message "A software module is part of a product."@en ;
+    ] .
+
+m5sh:InterfaceShape a sh:NodeShape ;
+    sh:targetClass m5:Interface ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "An interface needs a name."@en ] ;
+    sh:property [
+        sh:path m5:connects ;
+        sh:minCount 2 ;
+        sh:message "An interface connects at least two blocks or software modules."@en ;
+    ] .
+
+m5sh:ProposalShape a sh:NodeShape ;
+    sh:targetClass m5:Proposal ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A proposal needs a title."@en ] ;
+    sh:property [
+        sh:path m5:proposalState ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:node m5sh:InProposalStates ;
+        sh:message "A proposal has exactly one state from m5:ProposalStates."@en ;
+    ] ;
+    sh:property [
+        sh:path prov:wasAttributedTo ;
+        sh:minCount 1 ;
+        sh:message "A proposal says which agent made it (prov:wasAttributedTo)."@en ;
+    ] .
