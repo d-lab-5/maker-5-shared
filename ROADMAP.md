@@ -26,6 +26,8 @@ an idea. Each step links to the decision behind it.
   firmware, CAD and other files ([ADR-0011](adr/0011-boxes-hold-parts-and-their-artifacts.md)).
 - Parts' own codes: an EAN names the article, a GS1 code's serial or a
   printed serial finds the unit ([ADR-0012](adr/0012-a-products-barcode-names-the-article.md)).
+- The edge works with prod or stage, each its own folder, and takes its
+  workspaces from the cloud ([ADR-0013](adr/0013-each-environment-its-own-folder.md)).
 
 ## Next
 

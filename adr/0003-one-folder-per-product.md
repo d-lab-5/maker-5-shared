@@ -12,6 +12,9 @@ several places.
 
 ## Decision
 
+(Since [ADR-0013](0013-each-environment-its-own-folder.md) the data folder is
+`mymaker5docs/<environment>/`, one per cloud.)
+
 Each product is one folder in the edge's data folder (`mydocs/` by default):
 
 ```
