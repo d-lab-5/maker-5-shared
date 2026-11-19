@@ -28,6 +28,10 @@ an idea. Each step links to the decision behind it.
   printed serial finds the unit ([ADR-0012](adr/0012-a-products-barcode-names-the-article.md)).
 - The edge works with prod or stage, each its own folder, and takes its
   workspaces from the cloud ([ADR-0013](adr/0013-each-environment-its-own-folder.md)).
+- A Markdown BOM comes into a workspace's model; missing articles are proposed
+  for an admin; the edge's hardware canvas wires pins
+  ([ADR-0014](adr/0014-bom-import-and-the-hardware-canvas.md)). Next: a `.fzz`
+  export, and pin layouts kept with the article in the cloud.
 
 ## Next
 

@@ -30,7 +30,7 @@
     "footer": "Maker-5 by D-LAB-5",
     "diagrams": "how the cloud portal, the bench edge and the semantic graph work together through the Observe, Design, Build, Run loop, and the decisions that needed a picture",
     "ontology_title": "The Maker-5 ontology",
-    "ontology_scope": "The T-Box only: it defines hardware blocks, interfaces, software modules and provenance records, and how they relate. It holds no product's data. Each workspace's A-Box, the actual products and their parts, lives in Maker-5 and is never published here.",
+    "ontology_scope": "The T-Box only: it defines hardware blocks with their pins and wires, interfaces, software modules, articles and provenance records, and how they relate. It holds no product's data. Each workspace's A-Box, the actual products and their parts, lives in Maker-5 and is never published here.",
     "borrowed": "Terms from OSLC SysML v2, W3C PROV-O and SPDX, and what they mean in Maker-5.",
     "shapes": "The validation gates: what the cloud checks on every save of an A-Box, including an agent's proposal. A save that breaks one is refused with the message shown."
   }

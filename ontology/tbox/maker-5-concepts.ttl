@@ -30,3 +30,73 @@ m5:Approved a skos:Concept ; skos:inScheme m5:ProposalStates ; skos:topConceptOf
 
 m5:Rejected a skos:Concept ; skos:inScheme m5:ProposalStates ; skos:topConceptOf m5:ProposalStates ;
     skos:prefLabel "Rejected"@en , "Abgelehnt"@de , "Rejetée"@fr .
+
+m5:TrackingModes a skos:ConceptScheme ;
+    skos:prefLabel "How an article is tracked"@en , "Wie ein Artikel erfasst wird"@de , "Comment un article est suivi"@fr ;
+    skos:hasTopConcept m5:Bulk , m5:Serialised .
+
+m5:Bulk a skos:Concept ; skos:inScheme m5:TrackingModes ; skos:topConceptOf m5:TrackingModes ;
+    skos:prefLabel "In bulk"@en , "Als Menge"@de , "En vrac"@fr .
+
+m5:Serialised a skos:Concept ; skos:inScheme m5:TrackingModes ; skos:topConceptOf m5:TrackingModes ;
+    skos:prefLabel "Unit by unit"@en , "Einzeln"@de , "À l'unité"@fr .
+
+m5:ArticleCategories a skos:ConceptScheme ;
+    skos:prefLabel "Categories of articles"@en , "Artikelkategorien"@de , "Catégories d'articles"@fr ;
+    skos:hasTopConcept m5:CategoryCompute , m5:CategoryStorage , m5:CategoryElectronicComponent , m5:CategoryMechanicalPart , m5:CategoryCable , m5:CategoryConsumable , m5:CategoryTool .
+
+m5:CategoryCompute a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Compute"@en , "Rechner"@de , "Calcul"@fr .
+
+m5:CategoryStorage a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Storage"@en , "Speicher"@de , "Stockage"@fr .
+
+m5:CategoryElectronicComponent a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Electronic component"@en , "Elektronisches Bauteil"@de , "Composant électronique"@fr .
+
+m5:CategoryMechanicalPart a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Mechanical part"@en , "Mechanisches Teil"@de , "Pièce mécanique"@fr .
+
+m5:CategoryCable a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Cable"@en , "Kabel"@de , "Câble"@fr .
+
+m5:CategoryConsumable a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Consumable"@en , "Verbrauchsmaterial"@de , "Consommable"@fr .
+
+m5:CategoryTool a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:prefLabel "Tool"@en , "Werkzeug"@de , "Outil"@fr .
+
+m5:PinRoles a skos:ConceptScheme ;
+    skos:prefLabel "Roles of pins"@en , "Rollen von Pins"@de , "Rôles des broches"@fr ;
+    skos:hasTopConcept m5:PinPower , m5:PinGround , m5:PinSignal , m5:PinAudio , m5:PinVideo , m5:PinData .
+
+m5:PinPower a skos:Concept ; skos:inScheme m5:PinRoles ; skos:topConceptOf m5:PinRoles ;
+    skos:prefLabel "Power"@en , "Versorgung"@de , "Alimentation"@fr .
+
+m5:PinGround a skos:Concept ; skos:inScheme m5:PinRoles ; skos:topConceptOf m5:PinRoles ;
+    skos:prefLabel "Ground"@en , "Masse"@de , "Masse"@fr .
+
+m5:PinSignal a skos:Concept ; skos:inScheme m5:PinRoles ; skos:topConceptOf m5:PinRoles ;
+    skos:prefLabel "Signal"@en , "Signal"@de , "Signal"@fr .
+
+m5:PinAudio a skos:Concept ; skos:inScheme m5:PinRoles ; skos:topConceptOf m5:PinRoles ;
+    skos:prefLabel "Audio"@en , "Audio"@de , "Audio"@fr .
+
+m5:PinVideo a skos:Concept ; skos:inScheme m5:PinRoles ; skos:topConceptOf m5:PinRoles ;
+    skos:prefLabel "Video"@en , "Video"@de , "Vidéo"@fr .
+
+m5:PinData a skos:Concept ; skos:inScheme m5:PinRoles ; skos:topConceptOf m5:PinRoles ;
+    skos:prefLabel "Data"@en , "Daten"@de , "Données"@fr .
+
+m5:SupplyStates a skos:ConceptScheme ;
+    skos:prefLabel "Supply"@en , "Beschaffung"@de , "Approvisionnement"@fr ;
+    skos:hasTopConcept m5:SupplyThere , m5:SupplyInHand , m5:SupplyToBuy .
+
+m5:SupplyThere a skos:Concept ; skos:inScheme m5:SupplyStates ; skos:topConceptOf m5:SupplyStates ;
+    skos:prefLabel "Already there"@en , "Schon vorhanden"@de , "Déjà là"@fr .
+
+m5:SupplyInHand a skos:Concept ; skos:inScheme m5:SupplyStates ; skos:topConceptOf m5:SupplyStates ;
+    skos:prefLabel "In hand"@en , "Zur Hand"@de , "Sous la main"@fr .
+
+m5:SupplyToBuy a skos:Concept ; skos:inScheme m5:SupplyStates ; skos:topConceptOf m5:SupplyStates ;
+    skos:prefLabel "To buy or build"@en , "Zu kaufen oder bauen"@de , "À acheter ou construire"@fr .
