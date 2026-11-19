@@ -24,6 +24,8 @@ an idea. Each step links to the decision behind it.
 - Boxes: cartons, bags and drawers with a large label, holding parts,
   assemblies and other boxes, checked in and out on a phone, with their
   firmware, CAD and other files ([ADR-0011](adr/0011-boxes-hold-parts-and-their-artifacts.md)).
+- Parts' own codes: an EAN names the article, a GS1 code's serial or a
+  printed serial finds the unit ([ADR-0012](adr/0012-a-products-barcode-names-the-article.md)).
 
 ## Next
 

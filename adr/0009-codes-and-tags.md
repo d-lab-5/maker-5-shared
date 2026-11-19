@@ -25,6 +25,8 @@ was written to it.
   locks it (Web NFC), after the person confirms the lock.
 - Our codes are unique on the site, since the URL names no organisation; they
   resolve only for someone in the organisation that minted them.
+- (A product's barcode always goes on the article, and a GS1 code's serial
+  finds the unit: [ADR-0012](0012-a-products-barcode-names-the-article.md).)
 - **Existing codes are aliases** of an article or a unit, unique within a
   organisation: a GTIN/EAN (its check digit decides, kept as 14 digits), a
   manufacturer's QR (its text, or a SHA-256 of it when long), an NFC tag's
