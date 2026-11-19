@@ -21,9 +21,20 @@ an idea. Each step links to the decision behind it.
   ([ADR-0008](adr/0008-stock-lives-in-tables.md)), our codes, existing codes
   and NFC tags ([ADR-0009](adr/0009-codes-and-tags.md)), workspaces taking
   parts, from the site and the edge ([ADR-0010](adr/0010-workspaces-take-from-the-stock.md)).
+- Boxes: cartons, bags and drawers with a large label, holding parts,
+  assemblies and other boxes, checked in and out on a phone, with their
+  firmware, CAD and other files ([ADR-0011](adr/0011-boxes-hold-parts-and-their-artifacts.md)).
 
 ## Next
 
+- **Code:** a workspace links its git repositories; the edge clones them
+  into the product's folder, and the cloud keeps the links and released tags.
+- **Maker IDEs on the edge:** an Arduino sketch editor with compile and
+  upload, a breadboard view in the manner of Fritzing, and others, beside the
+  model and using the parts in stock.
+- **Product release:** a versioned bundle of a frozen model baseline, the
+  software release, the BOM, documents and CAD, and the boxes holding built
+  units.
 - **Observe:** the edge watches local Git repositories and firmware builds, and
   reports them to the cloud's graph.
 - **Design:** products, system blueprints and architecture decisions in the

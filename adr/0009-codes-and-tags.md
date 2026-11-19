@@ -16,6 +16,8 @@ was written to it.
   minted in batches by an organisation's admins and printed before they belong to
   anything. Someone sticks one on a part and scans it on the bench to bind it
   to an article or a unit.
+- (The host is amended by [ADR-0011](0011-boxes-hold-parts-and-their-artifacts.md):
+  a label carries the host of the site that printed it.)
 - A label's QR holds `HTTPS://MAKER-5.CLOUD/T/K7Q2M9`, in capitals, so the QR
   uses its alphanumeric mode: version 2 at error correction L, 25 modules,
   about **10 mm** on a 600 dpi laser sticker. An **NFC tag** holds the same
