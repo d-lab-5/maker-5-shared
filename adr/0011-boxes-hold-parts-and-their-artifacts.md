@@ -34,7 +34,8 @@ are and who has them, but not *where* they are.
   that workspace, in the same step
   ([ADR-0010](0010-workspaces-take-from-the-stock.md)). Each step is a
   movement.
-- **Labels.** A box gets a large label (95 × 65 mm, a 40 mm QR); parts keep
+- **Labels.** A box gets a label of 63.5 × 38.1 mm, the common address label
+  (21 to an A4 sheet), with a 30 mm QR read from a shelf 30 to 40 cm away. Parts keep
   their small labels or their own barcode
   ([ADR-0009](0009-codes-and-tags.md)).
 - **The label host.** A label carries the host of the site that printed it, in
