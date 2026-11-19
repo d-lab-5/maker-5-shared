@@ -32,6 +32,8 @@ an idea. Each step links to the decision behind it.
   for an admin; the edge's hardware canvas wires pins
   ([ADR-0014](adr/0014-bom-import-and-the-hardware-canvas.md)). Next: a `.fzz`
   export, and pin layouts kept with the article in the cloud.
+- Labels carry an M5 mark; a print queue packs labels of every size onto plain
+  A4 sticker sheets ([ADR-0015](adr/0015-labels-carry-an-m5-mark-and-pack-onto-plain-sheets.md)).
 
 ## Next
 
