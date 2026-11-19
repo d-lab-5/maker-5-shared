@@ -34,6 +34,9 @@ an idea. Each step links to the decision behind it.
   export, and pin layouts kept with the article in the cloud.
 - Labels carry an M5 mark; a print queue packs labels of every size onto plain
   A4 sticker sheets ([ADR-0015](adr/0015-labels-carry-an-m5-mark-and-pack-onto-plain-sheets.md)).
+- The hardware canvas takes parts from the Fritzing parts library, fetched on
+  the edge and credited ([ADR-0016](adr/0016-parts-from-the-fritzing-library.md)); full screen; the chat places
+  parts and draws wires.
 
 ## Next
 

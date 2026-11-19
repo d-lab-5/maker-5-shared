@@ -128,7 +128,10 @@ m5sh:BlockSupplyShape a sh:NodeShape ;
     sh:property [ sh:path m5:supplyState ; sh:maxCount 1 ; sh:node m5sh:InSupplyStates ;
                   sh:message "A block's supply is a concept from m5:SupplyStates."@en ] ;
     sh:property [ sh:path m5:canvasX ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
-    sh:property [ sh:path m5:canvasY ; sh:maxCount 1 ; sh:datatype xsd:integer ] .
+    sh:property [ sh:path m5:canvasY ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+    sh:property [ sh:path m5:fritzingPart ; sh:maxCount 1 ; sh:datatype xsd:string ;
+                  sh:pattern "^(core|contrib)/[^/]{1,200}\\.fzp$" ;
+                  sh:message "A block's Fritzing part is one file of the library's core or contrib folder."@en ] .
 
 m5sh:ModuleHostShape a sh:NodeShape ;
     sh:targetClass m5:SoftwareModule ;

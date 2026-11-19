@@ -32,7 +32,7 @@
     a owl:Ontology ;
     rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
     dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
-    owl:versionInfo "0.3.0" .
+    owl:versionInfo "0.4.0" .
 
 # --- What a product is made of ---------------------------------------
 
@@ -201,3 +201,8 @@ m5:runsOn a owl:ObjectProperty ;
     rdfs:range m5:Block ;
     rdfs:label "runs on"@en , "läuft auf"@de , "s'exécute sur"@fr ;
     rdfs:comment "The block whose software this is: the adapter on the Pi."@en .
+
+m5:fritzingPart a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "Fritzing part"@en , "Fritzing-Bauteil"@de , "pièce Fritzing"@fr ;
+    rdfs:comment "The part of the Fritzing parts library (github.com/fritzing/fritzing-parts, CC BY-SA 3.0) the block's pins and picture come from, as its file there: core/Sharp-PC817.fzp. The library's files stay on the edge that fetched them; only this name is in the model."@en .
