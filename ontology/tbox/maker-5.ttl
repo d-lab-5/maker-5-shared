@@ -32,7 +32,7 @@
     a owl:Ontology ;
     rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
     dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
-    owl:versionInfo "0.6.0" .
+    owl:versionInfo "0.7.0" .
 
 # --- What a product is made of ---------------------------------------
 
@@ -206,6 +206,16 @@ m5:fritzingPart a owl:DatatypeProperty ;
     rdfs:domain m5:Block ;
     rdfs:label "Fritzing part"@en , "Fritzing-Bauteil"@de , "pièce Fritzing"@fr ;
     rdfs:comment "The part of the Fritzing parts library (github.com/fritzing/fritzing-parts, CC BY-SA 3.0) the block's pins and picture come from, as its file there: core/Sharp-PC817.fzp. The library's files stay on the edge that fetched them; only this name is in the model."@en .
+
+m5:partImage a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "part image"@en , "Bauteilbild"@de , "image de la pièce"@fr ;
+    rdfs:comment "Where a block's picture comes from when it is not a Fritzing part: wokwi:<element> (the Wokwi elements, MIT) or drawn (drawn from its pins). A block has one source at most (ADR-0021)."@en .
+
+m5:partDrawing a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "part drawing"@en , "Bauteilzeichnung"@de , "dessin de la pièce"@fr ;
+    rdfs:comment "A picture of the block drawn by the agent, as SVG: shapes and text only, each of the block's pins marked with data-pin (ADR-0021)."@en .
 
 m5:deployedCommit a owl:DatatypeProperty ;
     rdfs:domain m5:Block ;

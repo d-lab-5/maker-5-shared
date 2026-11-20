@@ -50,6 +50,9 @@ an idea. Each step links to the decision behind it.
 - From the model to the board: a generated pin map that the code imports,
   and a deployment over SSH from the edge that the board's block records
   ([ADR-0020](adr/0020-from-the-model-to-the-board.md)).
+- A block's picture from Fritzing, the Wokwi elements, its own pins or the
+  agent's drawing, and boards that keep their ports for cables
+  ([ADR-0021](adr/0021-a-blocks-picture.md)).
 
 ## Next
 
