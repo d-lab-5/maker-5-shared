@@ -113,6 +113,9 @@ m5sh:PinShape a sh:NodeShape ;
     sh:property [ sh:path m5:pinOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class m5:Block ;
                   sh:message "A pin belongs to exactly one block."@en ] ;
     sh:property [ sh:path m5:pinNumber ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+    sh:property [ sh:path m5:pinSide ; sh:maxCount 1 ; sh:in ( "left" "right" "bottom" ) ;
+                  sh:message "A pin's side is left, right or bottom."@en ] ;
+    sh:property [ sh:path m5:pinPlace ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] ;
     sh:property [ sh:path m5:pinRole ; sh:maxCount 1 ; sh:node m5sh:InPinRoles ;
                   sh:message "A pin's role is a concept from m5:PinRoles."@en ] .
 

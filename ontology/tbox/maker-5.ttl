@@ -32,7 +32,7 @@
     a owl:Ontology ;
     rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
     dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
-    owl:versionInfo "0.7.0" .
+    owl:versionInfo "0.8.0" .
 
 # --- What a product is made of ---------------------------------------
 
@@ -152,6 +152,18 @@ m5:pinNumber a owl:DatatypeProperty ;
     rdfs:range xsd:integer ;
     rdfs:label "number"@en , "Nummer"@de , "numéro"@fr ;
     rdfs:comment "Its place on the part: header pin 11, terminal 2. Its name (schema:name) says what it carries: GPIO17, GND."@en .
+
+m5:pinSide a owl:DatatypeProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:range xsd:string ;
+    rdfs:label "side"@en , "Seite"@de , "côté"@fr ;
+    rdfs:comment "Where the pin is drawn on the part: left, right or bottom. Without it a long header has its odd pins left and even right, and a small part its first half left."@en .
+
+m5:pinPlace a owl:DatatypeProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:range xsd:integer ;
+    rdfs:label "place"@en , "Platz"@de , "place"@fr ;
+    rdfs:comment "The pin's place on its side, counted from the top or the left, as the person listed the pins. Without it the pins of a side follow their numbers."@en .
 
 m5:pinRole a owl:ObjectProperty ;
     rdfs:domain m5:Pin ;
