@@ -4,6 +4,7 @@
 @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
 @prefix schema: <https://schema.org/> .
 @prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
 # ============================================================
 # SHACL shapes, v0.1: the validation gates an A-Box must pass. Validate an
@@ -24,6 +25,20 @@ m5sh:ProductShape a sh:NodeShape ;
 
 m5sh:BlockShape a sh:NodeShape ;
     sh:targetClass m5:Block ;
+    sh:property [
+        sh:path m5:usesArticle ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:pattern "^https://maker-5\\.cloud/id/article/a-[23456789abcdefghjkmnpqrstuvwxyz]{10}$" ;
+        sh:message "A block or module is built from one article of the workspace's stock."@en ;
+    ] ;
+    sh:property [
+        sh:path m5:quantity ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:message "A quantity is a whole number, at least 1."@en ;
+    ] ;
     sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A block needs a name."@en ] ;
     sh:property [
         sh:path m5:blockType ;
@@ -39,6 +54,20 @@ m5sh:BlockShape a sh:NodeShape ;
 
 m5sh:SoftwareModuleShape a sh:NodeShape ;
     sh:targetClass m5:SoftwareModule ;
+    sh:property [
+        sh:path m5:usesArticle ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:pattern "^https://maker-5\\.cloud/id/article/a-[23456789abcdefghjkmnpqrstuvwxyz]{10}$" ;
+        sh:message "A block or module is built from one article of the workspace's stock."@en ;
+    ] ;
+    sh:property [
+        sh:path m5:quantity ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1 ;
+        sh:message "A quantity is a whole number, at least 1."@en ;
+    ] ;
     sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A software module needs a name."@en ] ;
     sh:property [
         sh:path m5:partOf ;
@@ -69,3 +98,53 @@ m5sh:ProposalShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:message "A proposal says which agent made it (prov:wasAttributedTo)."@en ;
     ] .
+
+# --- Hardware and supply (ADR-0014) -----------------------------------
+
+m5sh:InPinRoles a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue m5:PinRoles ] .
+
+m5sh:InSupplyStates a sh:NodeShape ;
+    sh:property [ sh:path skos:inScheme ; sh:hasValue m5:SupplyStates ] .
+
+m5sh:PinShape a sh:NodeShape ;
+    sh:targetClass m5:Pin ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ; sh:message "A pin needs a name."@en ] ;
+    sh:property [ sh:path m5:pinOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class m5:Block ;
+                  sh:message "A pin belongs to exactly one block."@en ] ;
+    sh:property [ sh:path m5:pinNumber ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+    sh:property [ sh:path m5:pinSide ; sh:maxCount 1 ; sh:in ( "left" "right" "bottom" ) ;
+                  sh:message "A pin's side is left, right or bottom."@en ] ;
+    sh:property [ sh:path m5:pinPlace ; sh:maxCount 1 ; sh:datatype xsd:integer ; sh:minInclusive 1 ] ;
+    sh:property [ sh:path m5:pinRole ; sh:maxCount 1 ; sh:node m5sh:InPinRoles ;
+                  sh:message "A pin's role is a concept from m5:PinRoles."@en ] .
+
+m5sh:WireShape a sh:NodeShape ;
+    sh:targetClass m5:Wire ;
+    sh:property [ sh:path m5:wireEnd ; sh:minCount 2 ; sh:maxCount 2 ; sh:class m5:Pin ;
+                  sh:message "A wire joins exactly two pins."@en ] ;
+    sh:property [ sh:path m5:wireColor ; sh:maxCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path m5:alongInterface ; sh:maxCount 1 ; sh:class m5:Interface ] .
+
+m5sh:BlockSupplyShape a sh:NodeShape ;
+    sh:targetClass m5:Block ;
+    sh:property [ sh:path m5:supplyState ; sh:maxCount 1 ; sh:node m5sh:InSupplyStates ;
+                  sh:message "A block's supply is a concept from m5:SupplyStates."@en ] ;
+    sh:property [ sh:path m5:canvasX ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+    sh:property [ sh:path m5:canvasY ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
+    sh:property [ sh:path m5:fritzingPart ; sh:maxCount 1 ; sh:datatype xsd:string ;
+                  sh:pattern "^(core|contrib)/[^/]{1,200}\\.fzp$" ;
+                  sh:message "A block's Fritzing part is one file of the library's core or contrib folder."@en ] ;
+    sh:property [ sh:path m5:partImage ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^(wokwi:[a-z0-9-]{1,60}|drawn)$" ;
+                  sh:message "A block's part image is wokwi:<element> or drawn."@en ] ;
+    sh:property [ sh:path m5:partDrawing ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:maxLength 40000 ; sh:pattern "^<svg[\\s>]" ;
+                  sh:message "A block's drawing is one SVG of at most 40 000 characters."@en ] ;
+    sh:property [ sh:path m5:deployedCommit ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9a-f]{40}$" ;
+                  sh:message "A block's deployed commit is one full commit id."@en ] ;
+    sh:property [ sh:path m5:deployedAt ; sh:maxCount 1 ; sh:datatype xsd:dateTime ;
+                  sh:message "A block's deployment time is one date and time."@en ] .
+
+m5sh:ModuleHostShape a sh:NodeShape ;
+    sh:targetClass m5:SoftwareModule ;
+    sh:property [ sh:path m5:runsOn ; sh:maxCount 1 ; sh:class m5:Block ;
+                  sh:message "A software module runs on at most one block."@en ] .
