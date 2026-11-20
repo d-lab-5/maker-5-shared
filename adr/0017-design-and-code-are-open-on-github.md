@@ -64,8 +64,18 @@ repositories.
   one, and the first push comes only after the person has reviewed it.
 - The guard is a net, not a proof. It cannot recognise a private name
   written as prose, so the review before a push still matters.
-- `hardware/` is a projection of the model. A change made there by hand is
-  overwritten by the next push; the model is where the design is changed.
+- `hardware/` is a projection of the model, so a change made there on GitHub
+  is not simply overwritten. On Pull the edge compares `hardware/model.ttl`
+  before and after, and keeps what others added and removed, with their
+  commits, beside the clone. The Code tab offers to bring it into the model
+  (only statements about the design, checked by SHACL, as one revision) or
+  to keep the model. No push goes out until one is chosen. The agent can
+  show it (`repo_incoming`) and propose taking it (`repo_take_incoming`).
+- `software/generated/` holds `pins.py` and `pins.json`, also written from
+  the model on every push: for each board, its wired pins, their GPIO
+  numbers and what they go to. Code imports it instead of writing a pin
+  number, and the review before a push warns about a GPIO the code uses that
+  nothing is wired to ([ADR-0020](0020-from-the-model-to-the-board.md)).
 - A workspace with no edge can still be read on GitHub. Writing to it goes
   through an edge, or through ordinary pull requests on GitHub that the
   edge then pulls.

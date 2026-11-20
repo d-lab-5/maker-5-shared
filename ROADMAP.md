@@ -45,6 +45,11 @@ an idea. Each step links to the decision behind it.
 - Each workspace's design and code in its own GitHub repository under
   maker-5-platform, pushed by the edge with the person's login, guarded;
   the business stays in the cloud ([ADR-0017](adr/0017-design-and-code-are-open-on-github.md)).
+- Changes made to `hardware/model.ttl` on GitHub are offered to the model on
+  Pull instead of being overwritten ([ADR-0017](adr/0017-design-and-code-are-open-on-github.md)).
+- From the model to the board: a generated pin map that the code imports,
+  and a deployment over SSH from the edge that the board's block records
+  ([ADR-0020](adr/0020-from-the-model-to-the-board.md)).
 
 ## Next
 

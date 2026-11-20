@@ -131,7 +131,11 @@ m5sh:BlockSupplyShape a sh:NodeShape ;
     sh:property [ sh:path m5:canvasY ; sh:maxCount 1 ; sh:datatype xsd:integer ] ;
     sh:property [ sh:path m5:fritzingPart ; sh:maxCount 1 ; sh:datatype xsd:string ;
                   sh:pattern "^(core|contrib)/[^/]{1,200}\\.fzp$" ;
-                  sh:message "A block's Fritzing part is one file of the library's core or contrib folder."@en ] .
+                  sh:message "A block's Fritzing part is one file of the library's core or contrib folder."@en ] ;
+    sh:property [ sh:path m5:deployedCommit ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:pattern "^[0-9a-f]{40}$" ;
+                  sh:message "A block's deployed commit is one full commit id."@en ] ;
+    sh:property [ sh:path m5:deployedAt ; sh:maxCount 1 ; sh:datatype xsd:dateTime ;
+                  sh:message "A block's deployment time is one date and time."@en ] .
 
 m5sh:ModuleHostShape a sh:NodeShape ;
     sh:targetClass m5:SoftwareModule ;

@@ -32,7 +32,7 @@
     a owl:Ontology ;
     rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
     dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
-    owl:versionInfo "0.5.0" .
+    owl:versionInfo "0.6.0" .
 
 # --- What a product is made of ---------------------------------------
 
@@ -206,3 +206,13 @@ m5:fritzingPart a owl:DatatypeProperty ;
     rdfs:domain m5:Block ;
     rdfs:label "Fritzing part"@en , "Fritzing-Bauteil"@de , "pièce Fritzing"@fr ;
     rdfs:comment "The part of the Fritzing parts library (github.com/fritzing/fritzing-parts, CC BY-SA 3.0) the block's pins and picture come from, as its file there: core/Sharp-PC817.fzp. The library's files stay on the edge that fetched them; only this name is in the model."@en .
+
+m5:deployedCommit a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "deployed commit"@en , "installierter Commit"@de , "commit déployé"@fr ;
+    rdfs:comment "The commit of the workspace's repository whose software/ an edge last deployed to this board (ADR-0020)."@en .
+
+m5:deployedAt a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "deployed at"@en , "installiert am"@de , "déployé le"@fr ;
+    rdfs:comment "When an edge last deployed software to this board."@en .
