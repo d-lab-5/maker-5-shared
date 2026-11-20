@@ -32,7 +32,7 @@
     a owl:Ontology ;
     rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
     dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
-    owl:versionInfo "0.4.0" .
+    owl:versionInfo "0.5.0" .
 
 # --- What a product is made of ---------------------------------------
 

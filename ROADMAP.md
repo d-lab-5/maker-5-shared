@@ -39,6 +39,9 @@ an idea. Each step links to the decision behind it.
   parts and draws wires.
 - The landing page splits an organisation's workspaces into active (an edge
   used them in 14 days) and passive ([ADR-0018](adr/0018-active-means-an-edge-used-it-in-14-days.md)).
+- The stock as a catalogue: categories in two levels, as tiles to drill into,
+  and an agent that reuses free and idle parts before proposing new ones
+  ([ADR-0019](adr/0019-article-categories-in-two-levels.md)).
 
 ## Next
 

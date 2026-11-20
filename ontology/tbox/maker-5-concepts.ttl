@@ -1,5 +1,6 @@
 @prefix m5:      <https://maker-5.cloud/ontology#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 
 # ============================================================
 # Concept schemes (SKOS), v0.1.
@@ -43,28 +44,260 @@ m5:Serialised a skos:Concept ; skos:inScheme m5:TrackingModes ; skos:topConceptO
 
 m5:ArticleCategories a skos:ConceptScheme ;
     skos:prefLabel "Categories of articles"@en , "Artikelkategorien"@de , "Catégories d'articles"@fr ;
-    skos:hasTopConcept m5:CategoryCompute , m5:CategoryStorage , m5:CategoryElectronicComponent , m5:CategoryMechanicalPart , m5:CategoryCable , m5:CategoryConsumable , m5:CategoryTool .
+    rdfs:comment "Two levels (ADR-0019): a top category and its subcategories. skos:notation is the value an article carries, top or top/sub."@en ;
+    skos:hasTopConcept m5:CategoryControllers , m5:CategorySensors , m5:CategoryActuators , m5:CategoryPower , m5:CategoryCommunication , m5:CategoryMedia , m5:CategoryComponents , m5:CategoryCables , m5:CategoryChassis , m5:CategoryMechanical , m5:CategoryTools , m5:CategoryConsumables , m5:CategoryOther .
 
-m5:CategoryCompute a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
-    skos:prefLabel "Compute"@en , "Rechner"@de , "Calcul"@fr .
+m5:CategoryControllers a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "controllers" ;
+    skos:prefLabel "Controllers & computers"@en , "Steuerungen & Rechner"@de , "Contrôleurs & ordinateurs"@fr ;
+    skos:narrower m5:CategoryControllersSbc , m5:CategoryControllersMcu , m5:CategoryControllersRadioModules , m5:CategoryControllersStorage , m5:CategoryControllersPhones .
 
-m5:CategoryStorage a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+m5:CategoryControllersSbc a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryControllers ;
+    skos:notation "controllers/sbc" ;
+    skos:prefLabel "Single-board computers"@en , "Einplatinenrechner"@de , "Ordinateurs monocarte"@fr .
+
+m5:CategoryControllersMcu a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryControllers ;
+    skos:notation "controllers/mcu" ;
+    skos:prefLabel "Microcontroller boards"@en , "Mikrocontroller-Boards"@de , "Cartes microcontrôleur"@fr .
+
+m5:CategoryControllersRadioModules a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryControllers ;
+    skos:notation "controllers/radio-modules" ;
+    skos:prefLabel "Radio modules"@en , "Funkmodule"@de , "Modules radio"@fr .
+
+m5:CategoryControllersStorage a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryControllers ;
+    skos:notation "controllers/storage" ;
     skos:prefLabel "Storage"@en , "Speicher"@de , "Stockage"@fr .
 
-m5:CategoryElectronicComponent a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
-    skos:prefLabel "Electronic component"@en , "Elektronisches Bauteil"@de , "Composant électronique"@fr .
+m5:CategoryControllersPhones a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryControllers ;
+    skos:notation "controllers/phones" ;
+    skos:prefLabel "Phones & tablets"@en , "Telefone & Tablets"@de , "Téléphones & tablettes"@fr .
 
-m5:CategoryMechanicalPart a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
-    skos:prefLabel "Mechanical part"@en , "Mechanisches Teil"@de , "Pièce mécanique"@fr .
+m5:CategorySensors a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "sensors" ;
+    skos:prefLabel "Sensors"@en , "Sensoren"@de , "Capteurs"@fr ;
+    skos:narrower m5:CategorySensorsEnvironment , m5:CategorySensorsMotion , m5:CategorySensorsVision , m5:CategorySensorsButtons , m5:CategorySensorsElectrical .
 
-m5:CategoryCable a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
-    skos:prefLabel "Cable"@en , "Kabel"@de , "Câble"@fr .
+m5:CategorySensorsEnvironment a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategorySensors ;
+    skos:notation "sensors/environment" ;
+    skos:prefLabel "Environment"@en , "Umwelt"@de , "Environnement"@fr .
 
-m5:CategoryConsumable a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
-    skos:prefLabel "Consumable"@en , "Verbrauchsmaterial"@de , "Consommable"@fr .
+m5:CategorySensorsMotion a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategorySensors ;
+    skos:notation "sensors/motion" ;
+    skos:prefLabel "Motion & position"@en , "Bewegung & Lage"@de , "Mouvement & position"@fr .
 
-m5:CategoryTool a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
-    skos:prefLabel "Tool"@en , "Werkzeug"@de , "Outil"@fr .
+m5:CategorySensorsVision a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategorySensors ;
+    skos:notation "sensors/vision" ;
+    skos:prefLabel "Camera & vision"@en , "Kamera & Bild"@de , "Caméra & vision"@fr .
+
+m5:CategorySensorsButtons a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategorySensors ;
+    skos:notation "sensors/buttons" ;
+    skos:prefLabel "Buttons & switches"@en , "Taster & Schalter"@de , "Boutons & interrupteurs"@fr .
+
+m5:CategorySensorsElectrical a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategorySensors ;
+    skos:notation "sensors/electrical" ;
+    skos:prefLabel "Electrical"@en , "Elektrisch"@de , "Électriques"@fr .
+
+m5:CategoryActuators a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "actuators" ;
+    skos:prefLabel "Actuators"@en , "Aktoren"@de , "Actionneurs"@fr ;
+    skos:narrower m5:CategoryActuatorsMotors , m5:CategoryActuatorsServos , m5:CategoryActuatorsRelays , m5:CategoryActuatorsLocks , m5:CategoryActuatorsPumps .
+
+m5:CategoryActuatorsMotors a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryActuators ;
+    skos:notation "actuators/motors" ;
+    skos:prefLabel "Motors"@en , "Motoren"@de , "Moteurs"@fr .
+
+m5:CategoryActuatorsServos a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryActuators ;
+    skos:notation "actuators/servos" ;
+    skos:prefLabel "Servos"@en , "Servos"@de , "Servos"@fr .
+
+m5:CategoryActuatorsRelays a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryActuators ;
+    skos:notation "actuators/relays" ;
+    skos:prefLabel "Relays & MOSFETs"@en , "Relais & MOSFETs"@de , "Relais & MOSFET"@fr .
+
+m5:CategoryActuatorsLocks a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryActuators ;
+    skos:notation "actuators/locks" ;
+    skos:prefLabel "Locks & solenoids"@en , "Schlösser & Hubmagnete"@de , "Serrures & solénoïdes"@fr .
+
+m5:CategoryActuatorsPumps a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryActuators ;
+    skos:notation "actuators/pumps" ;
+    skos:prefLabel "Pumps & valves"@en , "Pumpen & Ventile"@de , "Pompes & vannes"@fr .
+
+m5:CategoryPower a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "power" ;
+    skos:prefLabel "Power"@en , "Stromversorgung"@de , "Alimentation"@fr ;
+    skos:narrower m5:CategoryPowerSupplies , m5:CategoryPowerConverters , m5:CategoryPowerBatteries , m5:CategoryPowerProtection .
+
+m5:CategoryPowerSupplies a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryPower ;
+    skos:notation "power/supplies" ;
+    skos:prefLabel "Power supplies"@en , "Netzteile"@de , "Alimentations"@fr .
+
+m5:CategoryPowerConverters a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryPower ;
+    skos:notation "power/converters" ;
+    skos:prefLabel "Converters"@en , "Wandler"@de , "Convertisseurs"@fr .
+
+m5:CategoryPowerBatteries a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryPower ;
+    skos:notation "power/batteries" ;
+    skos:prefLabel "Batteries & chargers"@en , "Akkus & Ladegeräte"@de , "Batteries & chargeurs"@fr .
+
+m5:CategoryPowerProtection a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryPower ;
+    skos:notation "power/protection" ;
+    skos:prefLabel "Protection"@en , "Schutz"@de , "Protection"@fr .
+
+m5:CategoryCommunication a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "communication" ;
+    skos:prefLabel "Communication"@en , "Kommunikation"@de , "Communication"@fr ;
+    skos:narrower m5:CategoryCommunicationNetworking , m5:CategoryCommunicationRadio , m5:CategoryCommunicationBuses .
+
+m5:CategoryCommunicationNetworking a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryCommunication ;
+    skos:notation "communication/networking" ;
+    skos:prefLabel "Networking"@en , "Netzwerk"@de , "Réseau"@fr .
+
+m5:CategoryCommunicationRadio a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryCommunication ;
+    skos:notation "communication/radio" ;
+    skos:prefLabel "Radio"@en , "Funk"@de , "Radio"@fr .
+
+m5:CategoryCommunicationBuses a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryCommunication ;
+    skos:notation "communication/buses" ;
+    skos:prefLabel "Buses & interfaces"@en , "Busse & Schnittstellen"@de , "Bus & interfaces"@fr .
+
+m5:CategoryMedia a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "media" ;
+    skos:prefLabel "Displays & media"@en , "Anzeigen & Medien"@de , "Affichage & médias"@fr ;
+    skos:narrower m5:CategoryMediaDisplays , m5:CategoryMediaAudio , m5:CategoryMediaVideo , m5:CategoryMediaLights .
+
+m5:CategoryMediaDisplays a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMedia ;
+    skos:notation "media/displays" ;
+    skos:prefLabel "Displays"@en , "Anzeigen"@de , "Écrans"@fr .
+
+m5:CategoryMediaAudio a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMedia ;
+    skos:notation "media/audio" ;
+    skos:prefLabel "Audio"@en , "Audio"@de , "Audio"@fr .
+
+m5:CategoryMediaVideo a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMedia ;
+    skos:notation "media/video" ;
+    skos:prefLabel "Video"@en , "Video"@de , "Vidéo"@fr .
+
+m5:CategoryMediaLights a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMedia ;
+    skos:notation "media/lights" ;
+    skos:prefLabel "Lights & indicators"@en , "Leuchten & Anzeigen"@de , "Lumières & voyants"@fr .
+
+m5:CategoryComponents a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "components" ;
+    skos:prefLabel "Electronic components"@en , "Elektronische Bauteile"@de , "Composants électroniques"@fr ;
+    skos:narrower m5:CategoryComponentsIcs , m5:CategoryComponentsSemiconductors , m5:CategoryComponentsPassives , m5:CategoryComponentsPrototyping .
+
+m5:CategoryComponentsIcs a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryComponents ;
+    skos:notation "components/ics" ;
+    skos:prefLabel "ICs"@en , "ICs"@de , "Circuits intégrés"@fr .
+
+m5:CategoryComponentsSemiconductors a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryComponents ;
+    skos:notation "components/semiconductors" ;
+    skos:prefLabel "Optocouplers & semiconductors"@en , "Optokoppler & Halbleiter"@de , "Optocoupleurs & semi-conducteurs"@fr .
+
+m5:CategoryComponentsPassives a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryComponents ;
+    skos:notation "components/passives" ;
+    skos:prefLabel "Passives"@en , "Passive Bauteile"@de , "Composants passifs"@fr .
+
+m5:CategoryComponentsPrototyping a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryComponents ;
+    skos:notation "components/prototyping" ;
+    skos:prefLabel "Prototyping"@en , "Prototyping"@de , "Prototypage"@fr .
+
+m5:CategoryCables a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "cables" ;
+    skos:prefLabel "Cables & connectors"@en , "Kabel & Steckverbinder"@de , "Câbles & connecteurs"@fr ;
+    skos:narrower m5:CategoryCablesCables , m5:CategoryCablesConnectors , m5:CategoryCablesWire .
+
+m5:CategoryCablesCables a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryCables ;
+    skos:notation "cables/cables" ;
+    skos:prefLabel "Cables"@en , "Kabel"@de , "Câbles"@fr .
+
+m5:CategoryCablesConnectors a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryCables ;
+    skos:notation "cables/connectors" ;
+    skos:prefLabel "Connectors & terminals"@en , "Stecker & Klemmen"@de , "Connecteurs & borniers"@fr .
+
+m5:CategoryCablesWire a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryCables ;
+    skos:notation "cables/wire" ;
+    skos:prefLabel "Wire"@en , "Litze & Draht"@de , "Fil"@fr .
+
+m5:CategoryChassis a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "chassis" ;
+    skos:prefLabel "Chassis & enclosures"@en , "Gehäuse & Rahmen"@de , "Châssis & boîtiers"@fr ;
+    skos:narrower m5:CategoryChassisEnclosures , m5:CategoryChassisFrames , m5:CategoryChassisWheels , m5:CategoryChassisPrinted .
+
+m5:CategoryChassisEnclosures a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryChassis ;
+    skos:notation "chassis/enclosures" ;
+    skos:prefLabel "Enclosures"@en , "Gehäuse"@de , "Boîtiers"@fr .
+
+m5:CategoryChassisFrames a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryChassis ;
+    skos:notation "chassis/frames" ;
+    skos:prefLabel "Frames & profiles"@en , "Rahmen & Profile"@de , "Cadres & profilés"@fr .
+
+m5:CategoryChassisWheels a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryChassis ;
+    skos:notation "chassis/wheels" ;
+    skos:prefLabel "Wheels & tracks"@en , "Räder & Ketten"@de , "Roues & chenilles"@fr .
+
+m5:CategoryChassisPrinted a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryChassis ;
+    skos:notation "chassis/printed" ;
+    skos:prefLabel "Printed parts"@en , "Gedruckte Teile"@de , "Pièces imprimées"@fr .
+
+m5:CategoryMechanical a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "mechanical" ;
+    skos:prefLabel "Mechanical"@en , "Mechanik"@de , "Mécanique"@fr ;
+    skos:narrower m5:CategoryMechanicalFasteners , m5:CategoryMechanicalBearings , m5:CategoryMechanicalMounting .
+
+m5:CategoryMechanicalFasteners a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMechanical ;
+    skos:notation "mechanical/fasteners" ;
+    skos:prefLabel "Fasteners"@en , "Befestigungen"@de , "Fixations"@fr .
+
+m5:CategoryMechanicalBearings a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMechanical ;
+    skos:notation "mechanical/bearings" ;
+    skos:prefLabel "Bearings & shafts"@en , "Lager & Wellen"@de , "Roulements & arbres"@fr .
+
+m5:CategoryMechanicalMounting a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryMechanical ;
+    skos:notation "mechanical/mounting" ;
+    skos:prefLabel "Mounting"@en , "Montage"@de , "Montage"@fr .
+
+m5:CategoryTools a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "tools" ;
+    skos:prefLabel "Tools"@en , "Werkzeug"@de , "Outils"@fr ;
+    skos:narrower m5:CategoryToolsHand , m5:CategoryToolsMeasuring , m5:CategoryToolsSoldering .
+
+m5:CategoryToolsHand a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryTools ;
+    skos:notation "tools/hand" ;
+    skos:prefLabel "Hand tools"@en , "Handwerkzeug"@de , "Outils à main"@fr .
+
+m5:CategoryToolsMeasuring a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryTools ;
+    skos:notation "tools/measuring" ;
+    skos:prefLabel "Measuring"@en , "Messen"@de , "Mesure"@fr .
+
+m5:CategoryToolsSoldering a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryTools ;
+    skos:notation "tools/soldering" ;
+    skos:prefLabel "Soldering"@en , "Löten"@de , "Soudure"@fr .
+
+m5:CategoryConsumables a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "consumables" ;
+    skos:prefLabel "Consumables"@en , "Verbrauchsmaterial"@de , "Consommables"@fr ;
+    skos:narrower m5:CategoryConsumablesSolder , m5:CategoryConsumablesTape , m5:CategoryConsumablesFilament , m5:CategoryConsumablesHeatShrink .
+
+m5:CategoryConsumablesSolder a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryConsumables ;
+    skos:notation "consumables/solder" ;
+    skos:prefLabel "Solder"@en , "Lot"@de , "Soudure (fil)"@fr .
+
+m5:CategoryConsumablesTape a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryConsumables ;
+    skos:notation "consumables/tape" ;
+    skos:prefLabel "Tape & glue"@en , "Klebeband & Kleber"@de , "Ruban & colle"@fr .
+
+m5:CategoryConsumablesFilament a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryConsumables ;
+    skos:notation "consumables/filament" ;
+    skos:prefLabel "Filament"@en , "Filament"@de , "Filament"@fr .
+
+m5:CategoryConsumablesHeatShrink a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryConsumables ;
+    skos:notation "consumables/heat-shrink" ;
+    skos:prefLabel "Heat shrink"@en , "Schrumpfschlauch"@de , "Gaine thermo"@fr .
+
+m5:CategoryOther a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "other" ;
+    skos:prefLabel "Other"@en , "Sonstiges"@de , "Autre"@fr .
 
 m5:PinRoles a skos:ConceptScheme ;
     skos:prefLabel "Roles of pins"@en , "Rollen von Pins"@de , "Rôles des broches"@fr ;
