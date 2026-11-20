@@ -42,6 +42,9 @@ an idea. Each step links to the decision behind it.
 - The stock as a catalogue: categories in two levels, as tiles to drill into,
   and an agent that reuses free and idle parts before proposing new ones
   ([ADR-0019](adr/0019-article-categories-in-two-levels.md)).
+- Each workspace's design and code in its own GitHub repository under
+  maker-5-platform, pushed by the edge with the person's login, guarded;
+  the business stays in the cloud ([ADR-0017](adr/0017-design-and-code-are-open-on-github.md)).
 
 ## Next
 
