@@ -37,6 +37,8 @@ an idea. Each step links to the decision behind it.
 - The hardware canvas takes parts from the Fritzing parts library, fetched on
   the edge and credited ([ADR-0016](adr/0016-parts-from-the-fritzing-library.md)); full screen; the chat places
   parts and draws wires.
+- The landing page splits an organisation's workspaces into active (an edge
+  used them in 14 days) and passive ([ADR-0018](adr/0018-active-means-an-edge-used-it-in-14-days.md)).
 
 ## Next
 
