@@ -27,7 +27,7 @@ must be clear, from the site, the bench edge and its chat.
   article it is built from (`m5:usesArticle`, `m5:quantity`), so the edge
   lists what a workspace needs against what it took and what is free. Its chat
   proposes these steps, each confirmed by the person.
-- (The intake lets an edge check items in and bind their labels, for the person at its page: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
+- (The intake lets an edge check items in and bind their labels, for the person at its page, an admin: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
 
 ## Consequences
 

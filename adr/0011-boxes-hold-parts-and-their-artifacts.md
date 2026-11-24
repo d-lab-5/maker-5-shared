@@ -53,7 +53,7 @@ are and who has them, but not *where* they are.
 - **The edge** reads boxes and their artifacts, so the bench chat can answer
   "which box holds the Pi 1 prototype, and where is its firmware?". It does
   not check parts in or out. That happens on a phone, at the box.
-- (The intake lets an edge check items in for the person at its page: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
+- (The intake lets an edge check items in for the person at its page, an admin: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
 
 ## Consequences
 

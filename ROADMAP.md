@@ -55,7 +55,7 @@ an idea. Each step links to the decision behind it.
   ([ADR-0021](adr/0021-a-blocks-picture.md)).
 - The intake: scan a shelf, then label after label (M5 for maker parts, DHC
   for smart-home devices) with photos; the edge's agent describes each item
-  and a person checks it in, in one step
+  and an admin checks it in, in one step
   ([ADR-0022](adr/0022-intake-scanned-at-the-shelf.md)).
 
 ## Next

@@ -46,25 +46,34 @@ router). A label should say which one it is for.
   For a new article it also suggests the name, category, maker and model, and
   says how sure it is of each field. A suggestion changes nothing in the
   stock.
-- **A person checks in,** on the edge's Intake tab or the site.
+- **An admin checks in,** on the site (Materials → Intake, also on the
+  phone) or on the edge's Intake tab.
   - Checking in is **one transaction**. The article is found or made, and a
     made article is marked `intake`. The stock is received. Then a unit goes
     into the place, a new box of parts goes into the place, or the parts are
     counted into it. Finally the label is bound and the item is closed.
   - A known label instead moves its unit or box into the place.
   - `boxed ≤ onHand` holds as before.
-- **Who.** Anyone in the organisation captures and checks in, as with boxes.
-  This includes the edge, for the person at its page. This relaxes two
-  earlier rules:
-  - Making an article and receiving stock were an admin's steps with two-step
-    sign-in. Through the intake they are not, so anyone in the organisation
-    can now add stock this way.
+- **Who.**
+  - Anyone in the organisation captures, describes and drops, as with boxes.
+  - Checking in makes articles and receives stock, so it stays what those
+    were: an admin's, with two-step sign-in.
+  - The edge checks in only for the person who linked it, and only while that
+    person is an admin of the organisation with two-step sign-in. The cloud
+    asks the sign-in service at every check-in, so removing the person from
+    the admins, or their two-step sign-in, stops the edge at once.
   - [ADR-0010](0010-workspaces-take-from-the-stock.md) and
     [ADR-0011](0011-boxes-hold-parts-and-their-artifacts.md) said an edge
-    never checks in and never writes codes. For the intake it does both.
+    never checks in and never writes codes. For the intake it does both,
+    under the rule above.
 
   The agent can only describe. Check in and drop are not among the calls the
   chat may propose, and the edge refuses them from an agent.
+
+## Diagrams
+
+- [The intake](../diagrams/intake.html): from the shelf to the stock, and who
+  may do each step.
 
 ## Consequences
 
@@ -72,6 +81,7 @@ router). A label should say which one it is for.
   the bench, where the agent does most of it.
 - Admins see which articles came from the intake, and can tidy their names
   and categories.
+- A member without admin rights fills the intake; an admin empties it.
 - A later export to DigitalHome.Cloud reads the `dhc` articles and their
   units.
 - The phone no longer needs an article to put a new part in a box.
