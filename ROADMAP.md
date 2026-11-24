@@ -77,6 +77,11 @@ an idea. Each step links to the decision behind it.
 
 ## Later
 
+- **The DigitalHome house and room:** a cabinet, a workbench or a shelf at
+  the top of a workshop names the house and the room it stands in, from
+  DigitalHome.Cloud's spatial model, so a DHC device in a box is found in
+  the house, and one built into the house is found in its room.
+
 - **Build:** CAD/PCB artifacts and SPDX bills of materials tied to the blocks
   they realise.
 - **Run:** telemetry from connected test hardware on the bench, fed back into

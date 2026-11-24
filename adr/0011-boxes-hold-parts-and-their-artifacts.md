@@ -54,6 +54,12 @@ are and who has them, but not *where* they are.
   "which box holds the Pi 1 prototype, and where is its firmware?". It does
   not check parts in or out. That happens on a phone, at the box.
 - (The intake lets an edge check items in for the person at its page, an admin: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
+- (Amended: a box may also be a **cabinet** or a **workbench**, the top of a
+  workshop that holds shelves and boxes. An admin makes **boxes in a batch
+  with their labels**: numbered, as "Box 01" to "Box 21" for a sheet, or
+  named one a line, each bound to a fresh code at once. The number stays on
+  the box while its contents change; the contents and which box sits where
+  come later, by scanning in the intake.)
 
 ## Consequences
 
