@@ -70,6 +70,10 @@ router). A label should say which one it is for.
   The agent can only describe. Check in and drop are not among the calls the
   chat may propose, and the edge refuses them from an agent.
 
+**Amended by [ADR-0023](0023-orders-expected-until-scanned.md):** an item
+may name the order line it arrived for. The line brings its article and
+quantity, and check-in counts it as arrived.
+
 ## Diagrams
 
 - [The intake](../diagrams/intake.html): from the shelf to the stock, and who

@@ -29,6 +29,10 @@ must be clear, from the site, the bench edge and its chat.
   proposes these steps, each confirmed by the person.
 - (The intake lets an edge check items in and bind their labels, for the person at its page, an admin: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
 
+**Amended by [ADR-0023](0023-orders-expected-until-scanned.md):** an article
+remembers where it was bought (`supplierRefs`, the shop and its article
+number).
+
 ## Consequences
 
 - The stock page shows, per article, which workspaces hold it; the workspace's
