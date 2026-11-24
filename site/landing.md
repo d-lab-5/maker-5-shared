@@ -8,7 +8,7 @@ Maker-5 is a product engineering platform built on the D-LAB-5 cloud-and-edge
 architecture. It brings physical hardware prototyping and software development
 into one continuous lifecycle loop: **Observe → Design → Build → Run**.
 
-- **Cloud Lifecycle Portal** ([maker-5-cloud](https://github.com/d-lab-5/maker-5-cloud), at maker-5.cloud):
+- **Cloud Lifecycle Portal** ([maker-5-cloud](https://github.com/d-lab-5/maker-5-cloud), at maker5.cloud):
   manages your product portfolio, system blueprints, architecture decisions
   and AI agent proposals in one semantic graph. Agents analyse requirements and
   propose changes. A person reviews and approves every step.

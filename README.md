@@ -14,7 +14,7 @@ never anyone's data (see [SECURITY.md](SECURITY.md)).
 | [maker-5-edge](https://github.com/d-lab-5/maker-5-edge) | Local workstation and lab-bench edge daemon for Maker-5. It syncs Git repos, CAD/PCB artifacts and hardware telemetry with the cloud. | GNU GPLv3 |
 | maker-5-shared (this one) | Decisions, roadmap, diagrams, and the RDF/OWL ontology with SHACL shapes for hardware-software co-design and agent provenance | CC BY 4.0 / MIT |
 
-Read it at **https://docs.dlab5.net/d-lab-5/maker-5/** and **https://docs.maker-5.cloud/**.
+Read it at **https://docs.dlab5.net/d-lab-5/maker-5/**.
 
 ## Working on it
 

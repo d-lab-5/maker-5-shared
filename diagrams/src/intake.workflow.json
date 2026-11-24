@@ -1,0 +1,63 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "The intake: from the shelf to the stock",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "output": "diagrams/intake.html"
+  },
+  "lanes": [
+    { "id": "phone", "label": "Phone: anyone in the organisation" },
+    { "id": "cloud", "label": "Cloud" },
+    { "id": "edge", "label": "Edge and its agent" },
+    { "id": "admin", "label": "Admin, two-step sign-in", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "capture", "label": "At the shelf", "fromCol": 0, "toCol": 2 },
+    { "id": "describe", "label": "At the bench", "fromCol": 3, "toCol": 3, "variant": "dashed" },
+    { "id": "checkin", "label": "Check in", "fromCol": 4, "toCol": 5, "variant": "security" }
+  ],
+  "mainPath": ["shelf", "labels", "item", "describe", "review", "stock"],
+  "nodes": [
+    { "id": "shelf", "lane": "phone", "col": 0, "type": "frontend", "label": "Scan the shelf", "sublabel": "a blank label: a new place" },
+    { "id": "labels", "lane": "phone", "col": 1, "type": "frontend", "label": "Scan each label", "sublabel": "M5 or DHC, photo, note", "tag": "label after label" },
+    { "id": "item", "lane": "cloud", "col": 2, "type": "database", "label": "Intake item", "sublabel": "new, photos kept", "tag": "nothing in stock yet" },
+    { "id": "describe", "lane": "edge", "col": 3, "type": "backend", "label": "Agent describes", "sublabel": "reads photos, reuses articles", "tag": "intake skill" },
+    { "id": "drop", "lane": "phone", "col": 4, "type": "frontend", "label": "Drop", "sublabel": "a wrong scan; photos go" },
+    { "id": "review", "lane": "admin", "col": 4, "type": "security", "label": "Check in", "sublabel": "phone or edge page" },
+    { "id": "gate", "lane": "edge", "col": 5, "type": "security", "label": "Linked admin?", "sublabel": "asked at each check-in" },
+    { "id": "stock", "lane": "cloud", "col": 5, "type": "database", "label": "Stock", "sublabel": "article, unit or box, label", "tag": "one transaction" }
+  ],
+  "edges": [
+    { "id": "place", "from": "shelf", "to": "labels", "label": "the place" },
+    { "id": "capture", "from": "labels", "to": "item", "label": "each scan", "variant": "emphasis" },
+    { "id": "read", "from": "item", "to": "describe", "label": "photos + note" },
+    { "id": "suggest", "from": "describe", "to": "review", "label": "a suggestion", "variant": "dashed" },
+    { "id": "on-phone", "from": "review", "to": "stock", "label": "site", "variant": "emphasis" },
+    { "id": "on-edge", "from": "review", "to": "gate", "label": "edge", "variant": "security", "role": "branch" },
+    { "id": "allowed", "from": "gate", "to": "stock", "label": "yes", "variant": "security" },
+    { "id": "dropped", "from": "item", "to": "drop", "label": "not wanted", "variant": "dashed", "role": "branch" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Who does what",
+      "items": [
+        "Anyone in the organisation captures, describes and drops",
+        "Checking in makes articles and receives stock: an admin's, with two-step sign-in",
+        "The edge checks in only while the person who linked it is such an admin",
+        "The agent only describes: it cannot check in or drop"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Where it lives",
+      "items": [
+        "Cloud: materials-shared/intake.ts and store.ts, the MkIntake table",
+        "Phone: Scan → Intake; Materials → Intake to check in",
+        "Edge: the Intake tab, skill/intake.md, MCP intake_* tools"
+      ]
+    }
+  ]
+}

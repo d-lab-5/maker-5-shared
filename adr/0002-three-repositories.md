@@ -16,7 +16,7 @@ Maker-5 is split into three public repositories:
 
 | Repository | What it is | Made from | Licence |
 |---|---|---|---|
-| [d-lab-5/maker-5-cloud](https://github.com/d-lab-5/maker-5-cloud) | The cloud lifecycle portal and semantic graph engine, at maker-5.cloud | template-dlab5-cloud | GNU AGPLv3 |
+| [d-lab-5/maker-5-cloud](https://github.com/d-lab-5/maker-5-cloud) | The cloud lifecycle portal and semantic graph engine, at maker5.cloud | template-dlab5-cloud | GNU AGPLv3 |
 | [d-lab-5/maker-5-edge](https://github.com/d-lab-5/maker-5-edge) | The local workstation and lab-bench edge | python-tool-template + template-dlab5-edge | GNU GPLv3 |
 | [d-lab-5/maker-5-shared](https://github.com/d-lab-5/maker-5-shared) | These docs: decisions, roadmap, diagrams, the ontology reference | template-dlab5-shared | CC BY 4.0 (documents), MIT (scripts) |
 

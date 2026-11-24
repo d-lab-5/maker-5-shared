@@ -4,6 +4,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix schema:  <https://schema.org/> .
 @prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 
 # ============================================================
 # The Maker-5 T-Box, v0.1: a SEED for hardware-software co-design and
@@ -31,7 +32,7 @@
     a owl:Ontology ;
     rdfs:label "Maker-5 ontology"@en , "Maker-5-Ontologie"@de , "Ontologie Maker-5"@fr ;
     dcterms:description "Hardware blocks, interfaces and software modules of a product, and the provenance of every change an agent proposes and a person approves."@en ;
-    owl:versionInfo "0.1.0" .
+    owl:versionInfo "0.8.0" .
 
 # --- What a product is made of ---------------------------------------
 
@@ -83,3 +84,157 @@ m5:concerns a owl:ObjectProperty ;
     rdfs:domain m5:Proposal ;
     rdfs:label "concerns"@en , "betrifft"@de , "concerne"@fr ;
     rdfs:comment "What the proposal would change: a product, block, module or interface."@en .
+
+# --- Material: articles in a workspace's stock, and tracked units -----
+#
+# The stock itself (how many are on hand, who reserved what) is kept in the
+# cloud's tables, not in a graph (ADR-0008 in maker-5-shared): quantities
+# need atomic counters. Articles and units still have IRIs,
+#   https://maker-5.cloud/id/article/a-…   https://maker-5.cloud/id/unit/u-…
+# so a product's model can say which part a block is built from.
+
+m5:Article a owl:Class ;
+    rdfs:subClassOf schema:Product ;
+    rdfs:label "Article"@en , "Artikel"@de , "Article"@fr ;
+    rdfs:comment "A kind of part a workspace keeps in stock: a Raspberry Pi 1 B, a 10 kΩ resistor, a microSD card. Counted in bulk, or tracked one unit at a time."@en .
+
+m5:Unit a owl:Class ;
+    rdfs:subClassOf schema:IndividualProduct ;
+    rdfs:label "Unit"@en , "Einheit"@de , "Unité"@fr ;
+    rdfs:comment "One physical, tracked piece of an article, with its own code: this Pi, this SD card."@en .
+
+m5:usesArticle a owl:ObjectProperty ;
+    rdfs:label "built from"@en , "gebaut aus"@de , "réalisé avec"@fr ;
+    rdfs:comment "The article a block or software module is built from or runs on."@en .
+
+m5:quantity a owl:DatatypeProperty ;
+    rdfs:label "quantity"@en , "Menge"@de , "quantité"@fr ;
+    rdfs:comment "How many of the article one product needs for this block. 1 when not given."@en .
+
+m5:trackingMode a owl:ObjectProperty ;
+    rdfs:domain m5:Article ;
+    rdfs:label "tracked"@en , "erfasst"@de , "suivi"@fr ;
+    rdfs:comment "A concept from m5:TrackingModes."@en .
+
+m5:articleCategory a owl:ObjectProperty ;
+    rdfs:domain m5:Article ;
+    rdfs:label "category"@en , "Kategorie"@de , "catégorie"@fr ;
+    rdfs:comment "A concept from m5:ArticleCategories."@en .
+
+m5:installedIn a owl:ObjectProperty ;
+    rdfs:domain m5:Unit ;
+    rdfs:range m5:Unit ;
+    rdfs:label "installed in"@en , "eingebaut in"@de , "installé dans"@fr ;
+    rdfs:comment "The unit this one sits in: the SD card in the Pi."@en .
+
+m5:firmwareVersion a owl:DatatypeProperty ;
+    rdfs:domain m5:Unit ;
+    rdfs:label "firmware"@en , "Firmware"@de , "micrologiciel"@fr ;
+    rdfs:comment "What was last written to the unit: an OS image, a firmware build, with its version."@en .
+
+# --- Hardware: pins, wires and the canvas (ADR-0014) ------------------
+#
+# A block's pins and the wires between them are the physical side of an
+# interface: the edge's hardware canvas draws them, the chat reads them.
+# Where a block sits on the canvas is in the model too, so it syncs.
+
+m5:Pin a owl:Class ;
+    rdfs:label "Pin"@en , "Pin"@de , "Broche"@fr ;
+    rdfs:comment "One connection point of a block: a header pin, a screw terminal, a wire end of a cable."@en .
+
+m5:pinOf a owl:ObjectProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:range m5:Block ;
+    rdfs:label "pin of"@en , "Pin von"@de , "broche de"@fr .
+
+m5:pinNumber a owl:DatatypeProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:range xsd:integer ;
+    rdfs:label "number"@en , "Nummer"@de , "numéro"@fr ;
+    rdfs:comment "Its place on the part: header pin 11, terminal 2. Its name (schema:name) says what it carries: GPIO17, GND."@en .
+
+m5:pinSide a owl:DatatypeProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:range xsd:string ;
+    rdfs:label "side"@en , "Seite"@de , "côté"@fr ;
+    rdfs:comment "Where the pin is drawn on the part: left, right or bottom. Without it a long header has its odd pins left and even right, and a small part its first half left."@en .
+
+m5:pinPlace a owl:DatatypeProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:range xsd:integer ;
+    rdfs:label "place"@en , "Platz"@de , "place"@fr ;
+    rdfs:comment "The pin's place on its side, counted from the top or the left, as the person listed the pins. Without it the pins of a side follow their numbers."@en .
+
+m5:pinRole a owl:ObjectProperty ;
+    rdfs:domain m5:Pin ;
+    rdfs:label "role"@en , "Rolle"@de , "rôle"@fr ;
+    rdfs:comment "A concept from m5:PinRoles: power, ground, signal, audio, video, data."@en .
+
+m5:Wire a owl:Class ;
+    rdfs:label "Wire"@en , "Leitung"@de , "Fil"@fr ;
+    rdfs:comment "A physical connection between two pins: a jumper, a trace, a wire of a cable."@en .
+
+m5:wireEnd a owl:ObjectProperty ;
+    rdfs:domain m5:Wire ;
+    rdfs:range m5:Pin ;
+    rdfs:label "end"@en , "Ende"@de , "extrémité"@fr ;
+    rdfs:comment "One of the wire's two pins."@en .
+
+m5:wireColor a owl:DatatypeProperty ;
+    rdfs:domain m5:Wire ;
+    rdfs:label "colour"@en , "Farbe"@de , "couleur"@fr ;
+    rdfs:comment "The wire's colour, as a CSS colour name or #rrggbb."@en .
+
+m5:alongInterface a owl:ObjectProperty ;
+    rdfs:domain m5:Wire ;
+    rdfs:range m5:Interface ;
+    rdfs:label "carries"@en , "gehört zu"@de , "porte"@fr ;
+    rdfs:comment "The interface this wire is part of: the 4-wire cable, the I2C bus."@en .
+
+m5:canvasX a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:range xsd:integer ;
+    rdfs:label "x on the canvas"@en , "x auf der Fläche"@de , "x sur le plan"@fr .
+
+m5:canvasY a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:range xsd:integer ;
+    rdfs:label "y on the canvas"@en , "y auf der Fläche"@de , "y sur le plan"@fr .
+
+# --- From a bill of materials (ADR-0014) -------------------------------
+
+m5:supplyState a owl:ObjectProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "supply"@en , "Beschaffung"@de , "approvisionnement"@fr ;
+    rdfs:comment "A concept from m5:SupplyStates: the part is there, in hand, or still to buy."@en .
+
+m5:runsOn a owl:ObjectProperty ;
+    rdfs:domain m5:SoftwareModule ;
+    rdfs:range m5:Block ;
+    rdfs:label "runs on"@en , "läuft auf"@de , "s'exécute sur"@fr ;
+    rdfs:comment "The block whose software this is: the adapter on the Pi."@en .
+
+m5:fritzingPart a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "Fritzing part"@en , "Fritzing-Bauteil"@de , "pièce Fritzing"@fr ;
+    rdfs:comment "The part of the Fritzing parts library (github.com/fritzing/fritzing-parts, CC BY-SA 3.0) the block's pins and picture come from, as its file there: core/Sharp-PC817.fzp. The library's files stay on the edge that fetched them; only this name is in the model."@en .
+
+m5:partImage a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "part image"@en , "Bauteilbild"@de , "image de la pièce"@fr ;
+    rdfs:comment "Where a block's picture comes from when it is not a Fritzing part: wokwi:<element> (the Wokwi elements, MIT) or drawn (drawn from its pins). A block has one source at most (ADR-0021)."@en .
+
+m5:partDrawing a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "part drawing"@en , "Bauteilzeichnung"@de , "dessin de la pièce"@fr ;
+    rdfs:comment "A picture of the block drawn by the agent, as SVG: shapes and text only, each of the block's pins marked with data-pin (ADR-0021)."@en .
+
+m5:deployedCommit a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "deployed commit"@en , "installierter Commit"@de , "commit déployé"@fr ;
+    rdfs:comment "The commit of the workspace's repository whose software/ an edge last deployed to this board (ADR-0020)."@en .
+
+m5:deployedAt a owl:DatatypeProperty ;
+    rdfs:domain m5:Block ;
+    rdfs:label "deployed at"@en , "installiert am"@de , "déployé le"@fr ;
+    rdfs:comment "When an edge last deployed software to this board."@en .
