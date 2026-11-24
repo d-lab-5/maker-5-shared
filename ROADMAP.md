@@ -57,6 +57,9 @@ an idea. Each step links to the decision behind it.
   for smart-home devices) with photos; the edge's agent describes each item
   and an admin checks it in, in one step
   ([ADR-0022](adr/0022-intake-scanned-at-the-shelf.md)).
+- Orders: an order e-mail (Amazon's) dropped on the edge becomes expected
+  parts; scanning the parcel at the shelf checks it in against its line
+  ([ADR-0023](adr/0023-orders-expected-until-scanned.md)).
 - Production at maker5.cloud. An empty workspace is filled once from stage, or
   from its GitHub repository, on the edge
   ([ADR-0013](adr/0013-each-environment-its-own-folder.md)).
