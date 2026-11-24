@@ -31,6 +31,7 @@ home. Looking at a label, it should be clear which system it belongs to.
     left is remembered. The next print skips the used top when the same sheet
     is put back in the printer.
 - The die-cut layouts stay, for label paper with a grid.
+- (A code minted for smart-home devices prints DHC instead of M5: [ADR-0022](0022-intake-scanned-at-the-shelf.md).)
 
 ## Consequences
 
