@@ -1,7 +1,7 @@
 # CLAUDE.md: Maker-5 shared documentation
 
 The public home of Maker-5's decisions, roadmap, diagrams and ontology reference,
-built into docs.dlab5.net/d-lab-5/maker-5/ and published at docs.maker-5.cloud.
+built into docs.dlab5.net/d-lab-5/maker-5/. It has no domain of its own yet.
 It describes: d-lab-5/maker-5-cloud, d-lab-5/maker-5-edge.
 
 > **This repository is public.** Read SECURITY.md. No A-Box data, no real

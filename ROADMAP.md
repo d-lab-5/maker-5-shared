@@ -57,6 +57,9 @@ an idea. Each step links to the decision behind it.
   for smart-home devices) with photos; the edge's agent describes each item
   and an admin checks it in, in one step
   ([ADR-0022](adr/0022-intake-scanned-at-the-shelf.md)).
+- Production at maker5.cloud. An empty workspace is filled once from stage, or
+  from its GitHub repository, on the edge
+  ([ADR-0013](adr/0013-each-environment-its-own-folder.md)).
 
 ## Next
 

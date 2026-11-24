@@ -57,6 +57,11 @@ repositories.
 - **The agent** reads the repository (`repo_status`, `repo_files`,
   `repo_read`), proposes files (`repo_write`) and proposes a push
   (`repo_push`). Each is confirmed by the person, like any change.
+- (Amended at the go-live: **an existing repository brings its design.**
+  Linking one to an empty workspace first takes its `hardware/model.ttl` into
+  the model, so the next push doesn't write an empty design over it. Any
+  empty workspace can also be filled from its repository later
+  ([ADR-0013](0013-each-environment-its-own-folder.md)).)
 
 ## Consequences
 

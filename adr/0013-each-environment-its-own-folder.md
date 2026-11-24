@@ -36,6 +36,14 @@ name never synced, and renaming a workspace in the cloud cut its product off.
 - The behaviour comes from template-dlab5-edge's `SYNC_SCOPE =
   "per-connection"`. Its default stays `"merged"` for products whose stage and
   prod should meet.
+- (Amended at the go-live: **one way across.** A person can fill an *empty*
+  workspace from another connection's, as stage's door bell into a new prod
+  workspace. It is started on the edge's page, shown as a dry run first, and
+  copies once, one way. Only the open model travels, what a repository
+  publishes ([ADR-0017](0017-design-and-code-are-open-on-github.md)): blocks,
+  modules, interfaces, pins, wires and pictures, with their ids. Stock links
+  and quantities, proposals, decisions, provenance and revisions stay with
+  their cloud. The chat can't start one.)
 
 ## Consequences
 
