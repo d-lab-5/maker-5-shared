@@ -48,10 +48,16 @@ confirmation e-mail.
   order of the same part then matches it by the shop's number. This amends
   [ADR-0010](0010-workspaces-take-from-the-stock.md).
 
+**Amended by [ADR-0024](0024-supplier-documents-onto-the-parts.md):** every
+supplier document comes in through one door (an e-mail, a PDF, the chat's
+📎): lines are expected, linked to a part the stock has, or skipped, and the
+attached documents are kept on the parts. The chat may propose the import.
+
 ## Diagrams
 
-- [From the order to the shelf](../diagrams/orders.html): the e-mail on the
-  edge, the expected line in the cloud, and the check-in that books it.
+- [From the order to the shelf](../diagrams/orders.html): a supplier's
+  document on the edge, expected or linked to a part we have, and the
+  check-in that books it and moves its documents onto the part.
 
 ## Consequences
 

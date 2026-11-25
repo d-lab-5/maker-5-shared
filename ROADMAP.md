@@ -60,6 +60,10 @@ an idea. Each step links to the decision behind it.
 - Orders: an order e-mail (Amazon's) dropped on the edge becomes expected
   parts; scanning the parcel at the shelf checks it in against its line
   ([ADR-0023](adr/0023-orders-expected-until-scanned.md)).
+- Supplier documents: any shop's e-mail or PDF, attached in the edge's chat,
+  is expected, linked to the part we have, or skipped; duplicates are found
+  first, and the invoices and service reports are kept on the parts
+  ([ADR-0024](adr/0024-supplier-documents-onto-the-parts.md)).
 - Production at maker5.cloud. An empty workspace is filled once from stage, or
   from its GitHub repository, on the edge
   ([ADR-0013](adr/0013-each-environment-its-own-folder.md)).
