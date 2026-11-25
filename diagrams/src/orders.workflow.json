@@ -2,60 +2,215 @@
   "schema_version": 2,
   "diagram_type": "workflow",
   "meta": {
-    "title": "Orders: from the e-mail to the shelf",
+    "title": "Supplier documents: from the e-mail to the shelf",
     "locale": "en",
     "quality_profile": "showcase",
     "output": "diagrams/orders.html"
   },
   "lanes": [
-    { "id": "person", "label": "Person: anyone in the organisation" },
-    { "id": "edge", "label": "Edge and its agent" },
-    { "id": "cloud", "label": "Cloud" },
-    { "id": "admin", "label": "Admin, two-step sign-in", "variant": "exception" }
+    {
+      "id": "person",
+      "label": "Person: anyone in the organisation"
+    },
+    {
+      "id": "edge",
+      "label": "Edge and its agent"
+    },
+    {
+      "id": "cloud",
+      "label": "Cloud"
+    },
+    {
+      "id": "admin",
+      "label": "Admin, two-step sign-in",
+      "variant": "exception"
+    }
   ],
   "phases": [
-    { "id": "ordered", "label": "When it is ordered", "fromCol": 0, "toCol": 2 },
-    { "id": "arrives", "label": "When the parcel comes", "fromCol": 3, "toCol": 4, "variant": "dashed" },
-    { "id": "checkin", "label": "Check in", "fromCol": 5, "toCol": 5, "variant": "security" }
+    {
+      "id": "ordered",
+      "label": "When it is ordered",
+      "fromCol": 0,
+      "toCol": 2
+    },
+    {
+      "id": "arrives",
+      "label": "When the parcel comes",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "dashed"
+    },
+    {
+      "id": "checkin",
+      "label": "Check in",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "security"
+    }
   ],
-  "mainPath": ["mail", "read", "expected", "scan", "match", "checkin"],
+  "mainPath": [
+    "mail",
+    "read",
+    "expected",
+    "scan",
+    "match",
+    "checkin"
+  ],
   "nodes": [
-    { "id": "mail", "lane": "person", "col": 0, "type": "frontend", "label": "Drop the order e-mail", "sublabel": ".eml or pasted text" },
-    { "id": "read", "lane": "edge", "col": 1, "type": "backend", "label": "Read and preview", "sublabel": "match the stock or draft", "tag": "the e-mail is not kept" },
-    { "id": "expected", "lane": "cloud", "col": 2, "type": "database", "label": "Expected line", "sublabel": "order number, title, ASIN, count", "tag": "no stock yet" },
-    { "id": "scan", "lane": "person", "col": 3, "type": "frontend", "label": "Scan at the shelf", "sublabel": "as any intake item" },
-    { "id": "match", "lane": "edge", "col": 4, "type": "backend", "label": "Agent names the line", "sublabel": "orderLineId", "tag": "intake skill" },
-    { "id": "drop", "lane": "person", "col": 4, "type": "frontend", "label": "Not coming", "sublabel": "the line is dropped" },
-    { "id": "checkin", "lane": "admin", "col": 5, "type": "security", "label": "Check in", "sublabel": "phone or edge page" },
-    { "id": "stock", "lane": "cloud", "col": 5, "type": "database", "label": "Stock and line", "sublabel": "counts up; line arrived", "tag": "one transaction" }
+    {
+      "id": "mail",
+      "lane": "person",
+      "col": 0,
+      "type": "frontend",
+      "label": "Attach a supplier document",
+      "sublabel": "chat 📎 or Intake tab: .eml, PDF"
+    },
+    {
+      "id": "read",
+      "lane": "edge",
+      "col": 1,
+      "type": "backend",
+      "label": "Read, find duplicates",
+      "sublabel": "per-shop reader or the agent",
+      "tag": "the e-mail is not kept"
+    },
+    {
+      "id": "expected",
+      "lane": "cloud",
+      "col": 2,
+      "type": "database",
+      "label": "Expected line",
+      "sublabel": "order number, title, shop number, count",
+      "tag": "no stock yet"
+    },
+    {
+      "id": "scan",
+      "lane": "person",
+      "col": 3,
+      "type": "frontend",
+      "label": "Scan at the shelf",
+      "sublabel": "as any intake item"
+    },
+    {
+      "id": "match",
+      "lane": "edge",
+      "col": 4,
+      "type": "backend",
+      "label": "Agent names the line",
+      "sublabel": "orderLineId",
+      "tag": "intake skill"
+    },
+    {
+      "id": "drop",
+      "lane": "person",
+      "col": 4,
+      "type": "frontend",
+      "label": "Not coming",
+      "sublabel": "the line is dropped"
+    },
+    {
+      "id": "checkin",
+      "lane": "admin",
+      "col": 5,
+      "type": "security",
+      "label": "Check in",
+      "sublabel": "phone or edge page"
+    },
+    {
+      "id": "stock",
+      "lane": "cloud",
+      "col": 5,
+      "type": "database",
+      "label": "Stock and line",
+      "sublabel": "counts up; line arrived; documents moved",
+      "tag": "one transaction"
+    },
+    {
+      "id": "linked",
+      "lane": "cloud",
+      "col": 3,
+      "type": "database",
+      "label": "Part we have",
+      "sublabel": "shop number and documents",
+      "tag": "no second article"
+    }
   ],
   "edges": [
-    { "id": "e-mail", "from": "mail", "to": "read", "label": "the e-mail" },
-    { "id": "kept", "from": "read", "to": "expected", "label": "ticked lines", "variant": "emphasis" },
-    { "id": "parcel", "from": "expected", "to": "scan", "label": "the parcel", "variant": "dashed" },
-    { "id": "item", "from": "scan", "to": "match", "label": "an item" },
-    { "id": "suggest", "from": "match", "to": "checkin", "label": "a suggestion", "variant": "dashed" },
-    { "id": "book", "from": "checkin", "to": "stock", "label": "books it", "variant": "security" },
-    { "id": "cancel", "from": "expected", "to": "drop", "label": "cancelled", "variant": "dashed", "role": "branch" }
+    {
+      "id": "e-mail",
+      "from": "mail",
+      "to": "read",
+      "label": "the e-mail"
+    },
+    {
+      "id": "kept",
+      "from": "read",
+      "to": "expected",
+      "label": "expect",
+      "variant": "emphasis"
+    },
+    {
+      "id": "parcel",
+      "from": "expected",
+      "to": "scan",
+      "label": "the parcel",
+      "variant": "dashed"
+    },
+    {
+      "id": "item",
+      "from": "scan",
+      "to": "match",
+      "label": "an item"
+    },
+    {
+      "id": "suggest",
+      "from": "match",
+      "to": "checkin",
+      "label": "a suggestion",
+      "variant": "dashed"
+    },
+    {
+      "id": "book",
+      "from": "checkin",
+      "to": "stock",
+      "label": "books it",
+      "variant": "security"
+    },
+    {
+      "id": "cancel",
+      "from": "expected",
+      "to": "drop",
+      "label": "cancelled",
+      "variant": "dashed",
+      "role": "branch"
+    },
+    {
+      "id": "ours",
+      "from": "read",
+      "to": "linked",
+      "label": "ours already",
+      "variant": "dashed",
+      "role": "branch"
+    }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "What leaves the e-mail",
+      "title": "What leaves the document",
       "items": [
-        "The shop, the order number and its date",
-        "Each line: title, ASIN, quantity, unit price",
-        "Never the address, the name or the payment",
-        "Lines stay in the private stock, never in a public repository"
+        "The shop, its kind, number and date",
+        "Each line: title, the shop's number, quantity, price",
+        "Its attachments, once each (sha256), onto the parts, privately",
+        "Never the e-mail's text; never in a public repository"
       ]
     },
     {
       "dot": "rose",
       "title": "Where it lives",
       "items": [
-        "Edge: orders.py, the Intake tab's Order e-mail, MCP orders_open",
-        "Cloud: materials-shared/orders.ts and store.ts, the MkOrderLines table",
-        "Phone: Materials → Intake, Expected and From order"
+        "Edge: suppliers/ (amazon, elv, the agent for the rest), MCP supplier_read and supplier_apply",
+        "Cloud: materials-shared/docs.ts, orders.ts and store.ts; docs/ in the bucket",
+        "Phone and web: Expected on Intake; Documents on the article"
       ]
     }
   ]

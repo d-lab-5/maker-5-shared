@@ -33,6 +33,10 @@ must be clear, from the site, the bench edge and its chat.
 remembers where it was bought (`supplierRefs`, the shop and its article
 number).
 
+**Amended by [ADR-0024](0024-supplier-documents-onto-the-parts.md):** an
+article keeps its documents (invoices, delivery notes, service reports),
+privately for the organisation.
+
 ## Consequences
 
 - The stock page shows, per article, which workspaces hold it; the workspace's
