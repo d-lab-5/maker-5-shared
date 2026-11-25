@@ -60,3 +60,12 @@ nowhere to go but storage.
   deploy. That is deliberate: categories are part of the shared vocabulary.
 - Tiles with no articles are shown dimmed, so the shape of the catalogue
   stays the same from one organisation to the next.
+
+## Amendment, 2026-11-25: robots
+
+A fourteenth top category, **Robots** (`robots`), after Controllers, with
+`robots/educational` (educational and toy robots), `robots/mobile` (mobile
+robots and rovers) and `robots/arms`. A robot has a controller inside, but it
+is the robot that is lent, charged and labelled, so it is not filed under
+`controllers`. Robots are tracked unit by unit: the edge's guesses and an
+order e-mail's draft make them devices.

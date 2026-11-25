@@ -45,7 +45,7 @@ m5:Serialised a skos:Concept ; skos:inScheme m5:TrackingModes ; skos:topConceptO
 m5:ArticleCategories a skos:ConceptScheme ;
     skos:prefLabel "Categories of articles"@en , "Artikelkategorien"@de , "Catégories d'articles"@fr ;
     rdfs:comment "Two levels (ADR-0019): a top category and its subcategories. skos:notation is the value an article carries, top or top/sub."@en ;
-    skos:hasTopConcept m5:CategoryControllers , m5:CategorySensors , m5:CategoryActuators , m5:CategoryPower , m5:CategoryCommunication , m5:CategoryMedia , m5:CategoryComponents , m5:CategoryCables , m5:CategoryChassis , m5:CategoryMechanical , m5:CategoryTools , m5:CategoryConsumables , m5:CategoryOther .
+    skos:hasTopConcept m5:CategoryControllers , m5:CategoryRobots , m5:CategorySensors , m5:CategoryActuators , m5:CategoryPower , m5:CategoryCommunication , m5:CategoryMedia , m5:CategoryComponents , m5:CategoryCables , m5:CategoryChassis , m5:CategoryMechanical , m5:CategoryTools , m5:CategoryConsumables , m5:CategoryOther .
 
 m5:CategoryControllers a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
     skos:notation "controllers" ;
@@ -71,6 +71,23 @@ m5:CategoryControllersStorage a skos:Concept ; skos:inScheme m5:ArticleCategorie
 m5:CategoryControllersPhones a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryControllers ;
     skos:notation "controllers/phones" ;
     skos:prefLabel "Phones & tablets"@en , "Telefone & Tablets"@de , "Téléphones & tablettes"@fr .
+
+m5:CategoryRobots a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
+    skos:notation "robots" ;
+    skos:prefLabel "Robots"@en , "Roboter"@de , "Robots"@fr ;
+    skos:narrower m5:CategoryRobotsEducational , m5:CategoryRobotsMobile , m5:CategoryRobotsArms .
+
+m5:CategoryRobotsEducational a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryRobots ;
+    skos:notation "robots/educational" ;
+    skos:prefLabel "Educational & toy robots"@en , "Lern- & Spielroboter"@de , "Robots éducatifs & jouets"@fr .
+
+m5:CategoryRobotsMobile a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryRobots ;
+    skos:notation "robots/mobile" ;
+    skos:prefLabel "Mobile robots & rovers"@en , "Mobile Roboter & Rover"@de , "Robots mobiles & rovers"@fr .
+
+m5:CategoryRobotsArms a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:broader m5:CategoryRobots ;
+    skos:notation "robots/arms" ;
+    skos:prefLabel "Robot arms"@en , "Roboterarme"@de , "Bras robotiques"@fr .
 
 m5:CategorySensors a skos:Concept ; skos:inScheme m5:ArticleCategories ; skos:topConceptOf m5:ArticleCategories ;
     skos:notation "sensors" ;
